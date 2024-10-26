@@ -4,5 +4,8 @@ from . import views
 app_name = "bookings"
 
 urlpatterns = [
-    path("", views.wine_list, name="wine_cellar"),  # Corrected to call wine_list
+    path("", views.wine_list, name="wine_cellar"),
+    path(
+        "book/<int:wine_id>/", views.book_wine, name="book"
+    ),  # Ensure this line is correct
 ]
