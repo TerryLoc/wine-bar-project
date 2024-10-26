@@ -8,7 +8,7 @@ class wineCellar(models.Model):
     date = models.DateField()
     available_spots = models.PositiveIntegerField()
     what_to_expect = models.TextField()  # New field for 'What to Expect'
-    join_us = models.TextField()  # New field for 'Join Us'
+    join_us_for = models.TextField()  # New field for 'Join Us'
 
     def __str__(self):
         return self.title  # Use title instead of name
