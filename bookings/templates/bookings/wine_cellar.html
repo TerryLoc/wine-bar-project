@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Wine Cellar
+{% endblock title %}
+
+{% block content %}
+    <h1>Wine Tasting Experiences</h1>
+    <div class="wine-experiences">
+        {% for wine in wines %}
+            <div class="wine-experience">
+                <h2>{{ wine.title }}</h2>
+                <p>{{ wine.description }}</p>
+                <p><strong>Price:</strong> ${{ wine.price }}</p>
+                <p><strong>Date:</strong> {{ wine.date }}</p>
+                <p><strong>Available Spots:</strong> {{ wine.available_spots }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
