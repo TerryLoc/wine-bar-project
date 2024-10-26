@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from . import views
-from django.contrib.auth import views as auth_views  # if using Django auth
+from django.contrib.auth import views as auth_views  #
 
 
 urlpatterns = [
@@ -10,5 +10,5 @@ urlpatterns = [
     path("wine_cellar/", include("bookings.urls")),  # Include URLs for the bookings app
     path(
         "register/", auth_views.LoginView.as_view(), name="register"
-    ),  # Adjust as needed
+    ),  # Login view for the registration page
 ]
