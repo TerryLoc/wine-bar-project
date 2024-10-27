@@ -28,7 +28,7 @@
                 {% if user.is_authenticated %}
                   <a href="{% url 'bookings:book' wine.id %}" class="btn btn-primary">Book Now</a>
                 {% else %}
-                  <a href="{% url 'register' %}" class="btn btn-warning">Uncork Access</a>
+                  <a href="{% url 'bookings:register' %}" class="btn btn-warning">Uncork Access</a>
                 {% endif %}
               </div>
             </div>
