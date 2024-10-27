@@ -1,1 +1,1 @@
-web: gunicorn wine-bar-project.wsgi
+web: gunicorn win_bar.wsgi
