@@ -122,10 +122,9 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
-STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    BASE_DIR / "static"
+]  # Ensure 'static' is a folder in the project root
+STATIC_ROOT = BASE_DIR / "staticfiles"  # Ensure 'staticfiles' is not in version control
 
 
 # Default primary key field type

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        The Wine Bar
+      {% endblock title %}
+    </title>
+    <meta name="description" content="Your meta description here" />
+    <meta name="keywords" content="keyword1, keyword2, keyword3" />
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li>
+          <a href="{% url 'winery' %}">Winery</a>
+        </li>
+        <li>
+          <a href="{% url 'bookings:wine_cellar' %}">Wine Cellar</a>
+        </li>
+        {% comment %} <li><a href="{% url 'register' %}">Register</a></li>
+        <li><a href="{% url 'login' %}">Uncork Access</a></li>  {% endcomment %}
+      </ul>
+    </nav>
+    <main>
+      {% block content %}
+      {% endblock content %}
+    </main>
+    <script src="{% static 'js/main.js' %}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
