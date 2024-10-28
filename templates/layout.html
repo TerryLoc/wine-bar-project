@@ -39,12 +39,21 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'bookings:wine_cellar' %}">Wine Cellar</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'bookings:register' %}">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'bookings:login' %}">Uncork Access</a>
-          </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'bookings:profile' %}">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'bookings:register' %}">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'bookings:login' %}">Uncork Access</a>
+            </li>
+          {% endif %}
         </ul>
       </div>
     </nav>

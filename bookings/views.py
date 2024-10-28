@@ -4,6 +4,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import wineCellar
+from .models import UserProfile
+from .forms import UserProfileForm
 
 
 # Wine experience views
@@ -46,4 +48,27 @@ def login_view(request):
 
 @login_required
 def profile(request):
-    return render(request, "bookings/profile.html", {"user": request.user})
+    # profile = get_object_or_404(UserProfile, user=request.user)
+
+    # create the UserProfile instance if it doesn't exist
+    profile, created = UserProfile.objects.get_or_create(user=request.user)
+
+    if request.method == "POST":
+        # Check if the delete button was clicked
+        if "delete_profile" in request.POST:
+            profile.delete()
+            messages.success(request, "Profile deleted successfully.")
+            return redirect("winery")  # Redirect to homepage after deletion
+
+        # Otherwise, handle form submission for editing
+        form = UserProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Profile updated successfully.")
+            return redirect(
+                "bookings:profile"
+            )  # Refresh the profile page to show updated details
+    else:
+        form = UserProfileForm(instance=profile)
+
+    return render(request, "bookings/profile.html", {"form": form, "profile": profile})

@@ -6,9 +6,10 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", views.home, name="winery"),  # Home view for the main page
-    path("wine_cellar/", include("bookings.urls")),  # Include URLs for the bookings app
+    path("", views.home, name="winery"),
+    path("wine_cellar/", include("bookings.urls")),
+    path("register/", auth_views.LoginView.as_view(), name="register"),
     path(
-        "logout/", auth_views.LogoutView.as_view(), name="logout"
-    ),  # Logout view from Django
+        "logout/", auth_views.LogoutView.as_view(next_page="winery"), name="logout"
+    ),  # Logout view
 ]
