@@ -34,18 +34,6 @@ def register(request):
     return render(request, "bookings/register.html", {"form": form})
 
 
-def login_view(request):
-    if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect("bookings:wine_cellar")  # Redirect to wine list after login
-    else:
-        form = AuthenticationForm()
-    return render(request, "bookings/login.html", {"form": form})
-
-
 @login_required
 def profile(request):
     # profile = get_object_or_404(UserProfile, user=request.user)
@@ -72,3 +60,22 @@ def profile(request):
         form = UserProfileForm(instance=profile)
 
     return render(request, "bookings/profile.html", {"form": form, "profile": profile})
+
+
+# Login view with authentication
+def login_view(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect("bookings:profile")  # Redirect to wine list after login
+    else:
+        form = AuthenticationForm()
+    return render(request, "bookings/register.html", {"form": form})
+
+
+def log_out(request):
+    if request.method == "POST":
+        return redirect("bookings:winery")
+    return render(request, "bookings/logout.html")
