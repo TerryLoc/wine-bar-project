@@ -44,9 +44,9 @@
               <a class="nav-link" href="{% url 'bookings:profile' %}">Profile</a>
             </li>
             <li class="nav-item">
-              <form action="{% url 'logout' %}" method="post" class="inline-form">
+              <form method="post" action="{% url 'logout' %}">
                 {% csrf_token %}
-                <button type="submit" class="inline-form-button">Logout</button>
+                <button type="submit" class="btn btn-link nav-link">Logout</button>
               </form>
             </li>
           {% else %}

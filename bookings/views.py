@@ -72,10 +72,10 @@ def login_view(request):
             return redirect("bookings:profile")  # Redirect to wine list after login
     else:
         form = AuthenticationForm()
-    return render(request, "bookings/register.html", {"form": form})
+    return render(request, "bookings/login.html", {"form": form})
 
 
-def log_out(request):
-    if request.method == "POST":
-        return redirect("bookings:winery")
-    return render(request, "bookings/logout.html")
+# def log_out(request):
+#     if request.method == "POST":
+#         return redirect("bookings:winery")
+#     return render(request, "bookings/logout.html")
