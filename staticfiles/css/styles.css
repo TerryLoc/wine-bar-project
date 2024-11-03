@@ -20,9 +20,13 @@
   justify-content: space-evenly;
 }
 
-.btn-warning {
+.btn-warning,
+.btn-primary {
   display: flex;
   justify-content: center;
   margin: 20px auto;
   max-width: 40%;
+}
+.bg-light {
+  background-color: transparent !important;
 }
