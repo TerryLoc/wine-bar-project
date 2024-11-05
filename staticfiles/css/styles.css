@@ -1,23 +1,147 @@
+:root {
+  --text-color: rgb(243, 243, 243);
+  --text-color2: rgb(187, 187, 187);
+  --bg-color: rgba(71, 71, 71, 0.9);
+  --all-tsh: 1px 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+body {
+  background-image: url('/media/empty_glasses.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  color: aliceblue;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(41, 41, 41, 0.1);
+  z-index: 1;
+}
+
+body * {
+  position: relative;
+  z-index: 2;
+}
+
+.bg-light {
+  background-color: transparent !important;
+  display: flex;
+}
+
+.navbar-light .navbar-brand {
+  margin-left: 20px;
+  color: var(--text-color);
+  font-size: 2rem;
+}
+
+.navbar-light .navbar-brand:hover {
+  color: var(--text-color2);
+}
+
+.navbar-light .navbar-toggler-icon {
+  background-image: url('data:image/svg+xml;charset=utf8,<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path stroke="rgba(242, 242, 242, 1)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>');
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: var(--text-color2);
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.mb-4 {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem !important;
+  color: var(--text-color);
+  font-size: 1.25rem;
+  text-shadow: var(--all-tsh);
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+.mb-4 strong {
+  color: #ffc107;
+  font-size: 1.75rem;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  position: fixed;
+  z-index: 4;
+  top: 20%;
+  width: 40%;
+  /* width: 15%;s */
+  opacity: 0.3;
+  color: var(--text-color);
+}
+
+.card {
+  border-radius: 10px;
+  color: var(--text-color);
+  background-color: rgba(64, 64, 64, 0.9);
+  height: 100%;
+}
+
 .card-body {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
 }
 
 .card-title {
   font-size: 1.75rem;
   text-align: center;
+  font-style: italic;
+  text-shadow: var(--all-tsh);
 }
 
 .card-text {
   font-size: 1.25rem;
   max-width: 80%;
-  margin: 30px auto;
+  margin: 10px auto;
   text-align: center;
 }
 
 #info {
-  margin-top: 30px;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-evenly;
+}
+
+#info p {
+  padding: 10px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+#info strong {
+  color: #ffc107;
+}
+
+.about_tasting {
+  margin: 20px;
+}
+
+.about_tasting h6 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
 }
 
 .btn-warning,
@@ -27,6 +151,19 @@
   margin: 20px auto;
   max-width: 40%;
 }
-.bg-light {
-  background-color: transparent !important;
+
+@media screen and (max-width: 768px) {
+  #info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    height: 100%;
+  }
+
+  .btn-warning {
+    max-width: 60%;
+  }
 }

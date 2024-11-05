@@ -14,7 +14,16 @@ class wineCellar(models.Model):
     join_us_for = models.TextField()
 
     def __str__(self):
-        return self.title  # Use title instead of name
+        return self.title
+
+    def book_spot(self, user_profile):
+        # Check if spots are available before booking
+        if self.available_spots > 0:
+            self.available_spots -= 1
+            self.save()
+            user_profile.bookings.add(self)  # Add the booking to the user's profile
+            return True
+        return False  # Indicate no spots were available
 
 
 class UserProfile(models.Model):
@@ -22,18 +31,20 @@ class UserProfile(models.Model):
     name = models.CharField(max_length=200, blank=True)
     email = models.EmailField(max_length=200, blank=True)
     contact_number = models.CharField(max_length=15, blank=True)
-    bookings = models.ForeignKey(wineCellar, on_delete=models.SET_NULL, null=True)
+    bookings = models.ManyToManyField(wineCellar, blank=True)
 
     def __str__(self):
         return self.user.username
 
 
+# Signals to create and save a UserProfile instance whenever a User is created or saved.
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        UserProfile.objects.create(user=instance)
+        UserProfile.objects.get_or_create(user=instance)
 
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    instance.userprofile.save()
+    if hasattr(instance, "userprofile"):
+        instance.userprofile.save()

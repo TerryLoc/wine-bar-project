@@ -5,9 +5,8 @@
 {% block content %}
     <div class="container">
         <h2>My Profile</h2>
-        <!-- Profile view and edit form -->
+        <!-- Profile Information Display -->
         <div id="profile-view" class="mb-4">
-            <!-- Display Profile Information -->
             <p>
                 <strong>Name:</strong> {{ profile.name }}
             </p>
@@ -27,24 +26,41 @@
             <button type="button" class="btn btn-secondary" onclick="toggleEditMode()">Cancel</button>
         </form>
         <!-- Delete Profile Form -->
-        <form method="post"
-              onsubmit="return confirm('Are you sure you want to delete your profile?');">
+        <form method="post" onsubmit="return confirm('Are you sure you want to delete your profile?');">
             {% csrf_token %}
             <button type="submit" name="delete_profile" class="btn btn-danger mt-4">Delete Profile</button>
         </form>
-    </div>
-    <!-- JavaScript to Toggle Edit Mode -->
-    <script>
-    function toggleEditMode() {
-        var viewDiv = document.getElementById("profile-view");
-        var editForm = document.getElementById("profile-edit");
-        if (viewDiv.style.display === "none") {
-            viewDiv.style.display = "block";
-            editForm.style.display = "none";
-        } else {
-            viewDiv.style.display = "none";
-            editForm.style.display = "block";
-        }
+        <!-- User's Bookings List -->
+        <div class="user_bookings">
+            <h3>My Bookings</h3>
+            <ul>
+                {% for booking in bookings %}
+                    <li>
+                        {{ booking.title }} on {{ booking.date }}
+                        <form method="post" class="inline-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="wine_id" value="{{ booking.id }}">
+                            <button type="submit" name="cancel_booking" class="btn btn-danger btn-sm">Cancel Booking</button>
+                        </form>
+                    </li>
+                {% empty %}
+                    <p>You haven't made any bookings yet.</p>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- Toggle JavaScript -->
+        <script>
+function toggleEditMode() {
+    var viewDiv = document.getElementById("profile-view");
+    var editForm = document.getElementById("profile-edit");
+    if (viewDiv.style.display === "none") {
+        viewDiv.style.display = "block";
+        editForm.style.display = "none";
+    } else {
+        viewDiv.style.display = "none";
+        editForm.style.display = "block";
     }
-    </script>
+}
+        </script>
+    </div>
 {% endblock content %}
