@@ -3,9 +3,32 @@
     The Wine Bar
 {% endblock title %}
 {% block content %}
-    <div class="home-background">
-        <h1>Welcome to the Winery</h1>
-        <p>This is our home page 🫵. Head to the wine cellar and explore our testing experiences.</p>
-        {% comment %} <p>This is our home page 🫵. Head to the <a href="{% url 'wine_cellar' %}">wine celler</a> and explore our testing experiences.</p> {% endcomment %}
+    <div class="container py-5 text-center home-background">
+        <h1 class="display-4 mb-4">Welcome to <strong>The Wine Bar</strong> 🍷✨</h1>
+        <p class="lead text-muted mb-4">Your Next Great Experience Awaits</p>
+        <p class="fs-5">
+            Step into the world of curated wine adventures! At <em>The Wine Bar</em>, we do more than pour drinks—we craft unforgettable memories. Whether you're a seasoned sommelier or a casual sipper, we've got something special waiting for you.
+        </p>
+
+        <hr class="my-4">
+
+        <div class="row py-4">
+            <div class="col-md-4">
+                <h3 class="text-secondary">Exclusive Wine Experiences</h3>
+                <p>From vineyard tours to tasting flights, we connect you to the finest wines and the stories behind them.</p>
+            </div>
+            <div class="col-md-4">
+                <h3 class="text-secondary">Personalized Pairings</h3>
+                <p>Let us help you discover your perfect match—wine and food pairings made in heaven.</p>
+            </div>
+            <div class="col-md-4">
+                <h3 class="text-secondary">Community of Connoisseurs</h3>
+                <p>Share laughs, stories, and wine with a community that knows how to toast to the good life.</p>
+            </div>
+        </div>
+
+        <a href="{% url 'bookings:wine_cellar' %}" class="btn btn-primary btn-lg mt-3">
+            Explore the Wine Cellar
+        </a>
     </div>
 {% endblock content %}
