@@ -87,7 +87,9 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect("bookings:profile")  # Redirect to profile after login
+            return redirect(
+                "bookings:wine_cellar/profile"
+            )  # Redirect to profile after login
     else:
         form = AuthenticationForm()
     return render(request, "bookings/login.html", {"form": form})

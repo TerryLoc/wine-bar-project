@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Della+Respira&display=swap');
+
 :root {
   --text-color: rgb(243, 243, 243);
   --text-color2: rgb(187, 187, 187);
+  --text-color3: rgb(56, 56, 56);
   --bg-color: rgba(71, 71, 71, 0.9);
+  --bg-color2: rgba(21, 21, 21, 0.747);
   --all-tsh: 1px 1px 1px rgba(0, 0, 0, 0.6);
 }
 
 body {
+  font-family: 'Della Respira', serif;
+  letter-spacing: 1px;
   background-image: url('/media/empty_glasses.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -74,9 +80,33 @@ button:focus {
   outline: none;
 }
 
+.home-background {
+  background-color: var(--bg-color2);
+  box-shadow: 0 0 50px var(--bg-color2);
+  border-radius: 10px;
+  color: var(--text-color);
+}
+
+.pt-5,
+.py-5 {
+  padding: 3rem 1.5rem !important;
+}
+
+p.fs-5 {
+  font-size: 1.25rem;
+}
+
+strong .flip-horizontal {
+  transform: scale(-1, -1);
+}
+
+.muted-text {
+  color: var(--text-color);
+}
+
 .mb-4 strong {
   color: #ffc107;
-  font-size: 1.75rem;
+  font-size: 3.75rem;
 }
 
 .carousel-control-next,

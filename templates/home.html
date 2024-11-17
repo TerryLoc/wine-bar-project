@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 {% block title %}
-    The Wine Bar
+    THE WINE BAR
 {% endblock title %}
 {% block content %}
     <div class="container py-5 text-center home-background">
-        <h1 class="display-4 mb-4">Welcome to <strong>The Wine Bar</strong> 🍷✨</h1>
-        <p class="lead text-muted mb-4">Your Next Great Experience Awaits</p>
+        <h1 class="display-4 text-primary mb-4"><strong>We cordially invite you...</strong></h1>
+        <p class="lead text-muted mb-4">Your Next Wine Experience Awaits</p>
         <p class="fs-5">
             Step into the world of curated wine adventures! At <em>The Wine Bar</em>, we do more than pour drinks—we craft unforgettable memories. Whether you're a seasoned sommelier or a casual sipper, we've got something special waiting for you.
         </p>
@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <a href="{% url 'bookings:wine_cellar' %}" class="btn btn-primary btn-lg mt-3">
+        <a href="{% url 'bookings:wine_cellar' %}" class="btn btn-warning btn-lg mt-3">
             Explore the Wine Cellar
         </a>
     </div>
