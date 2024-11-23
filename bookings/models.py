@@ -10,6 +10,7 @@ class wineCellar(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateField()
     available_spots = models.PositiveIntegerField()
+    total_spots = models.PositiveIntegerField()
     what_to_expect = models.TextField()
     join_us_for = models.TextField()
 

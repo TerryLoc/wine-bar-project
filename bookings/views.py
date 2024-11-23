@@ -14,17 +14,31 @@ def wine_list(request):
     return render(request, "bookings/wine_cellar.html", {"wines": wines})
 
 
-@login_required
 def book_wine(request, wine_id):
     wine = get_object_or_404(wineCellar, id=wine_id)
     user_profile = UserProfile.objects.get(user=request.user)
 
+    # Attempt to book a spot
     if wine.book_spot(user_profile):
-        messages.success(request, "Booking successful! You've reserved a spot.")
+        message = "Booking successful! You've reserved a spot."
+        message_type = "success"
     else:
-        messages.error(request, "Sorry, no spots are available for this experience.")
+        message = "Sorry, no spots are available for this experience."
+        message_type = "error"
 
-    return redirect("bookings:wine_cellar")  # Redirect back to wine cellar page
+    wines = wineCellar.objects.all()
+
+    # Pass the wine and message details to the template
+    return render(
+        request,
+        "bookings/wine_cellar.html",
+        {
+            "wines": wines,
+            "highlighted_wine": wine,
+            "message": message,
+            "message_type": message_type,
+        },
+    )
 
 
 # User authentication views

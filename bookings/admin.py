@@ -13,6 +13,7 @@ class WineCellarAdmin(admin.ModelAdmin):
         "price",
         "date",
         "available_spots",
+        "total_spots",
         "what_to_expect",
         "join_us_for",
     )  # Include new fields

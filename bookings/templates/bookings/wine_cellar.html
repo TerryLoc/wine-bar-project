@@ -1,8 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
   <div class="container mt-4">
-    <h1 class="mb-4">Our Worldly<br><strong>Wine Experiences</strong></h1>
-    <div id="wineCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+    <h1 class="mb-4">
+      Our Worldly
+      <br>
+      <strong>Wine Experiences</strong>
+    </h1>
+    <div id="wineCarousel"
+         class="carousel slide"
+         data-ride="carousel"
+         data-interval="false">
       <div class="carousel-inner">
         {% for wine in wines %}
           <div class="carousel-item {% if forloop.first %}active{% endif %}">
@@ -11,8 +18,8 @@
                 <h5 class="card-title">{{ wine.title }}</h5>
                 <p class="card-text">{{ wine.description }}</p>
                 <div id="info">
-                   <p>
-                    <strong>Available Spots:</strong> {{ wine.available_spots }} of {{ wine.available_spots }}
+                  <p>
+                    <strong>Available Spots:</strong> {{ wine.available_spots }} of {{ wine.total_spots }}
                   </p>
                   <p>
                     <strong>Date:</strong> {{ wine.date }}
@@ -45,6 +52,14 @@
             </div>
           </div>
         {% endfor %}
+
+        <!-- Show message if this wine is the highlighted one -->
+        {% if wine == highlighted_wine and message %}
+          <div id="alert-message"
+               class="alert alert-{{ message_type }} mt-2"
+               role="alert">{{ message }}</div>
+        {% endif %}
+        
       </div>
       <!-- Carousel controls -->
       <a class="carousel-control-prev"
