@@ -4,6 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
+# Wine cellar model (unchanged except for removing `book_spot`)
 class wineCellar(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
@@ -17,28 +18,46 @@ class wineCellar(models.Model):
     def __str__(self):
         return self.title
 
-    def book_spot(self, user_profile):
-        # Check if spots are available before booking
-        if self.available_spots > 0:
-            self.available_spots -= 1
-            self.save()
-            user_profile.bookings.add(self)  # Add the booking to the user's profile
-            return True
-        return False  # Indicate no spots were available
+    # Optional utility to check if spots are available
+    def has_available_spots(self, num_spots=1):
+        return self.available_spots >= num_spots
 
 
+# User profile model (adjusted to remove the ManyToMany with wineCellar)
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, blank=True)
     email = models.EmailField(max_length=200, blank=True)
     contact_number = models.CharField(max_length=15, blank=True)
-    bookings = models.ManyToManyField(wineCellar, blank=True)
 
     def __str__(self):
         return self.user.username
 
 
-# Signals to create and save a UserProfile instance whenever a User is created or saved.
+# New Booking model
+class Booking(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookings")
+    wine_experience = models.ForeignKey(
+        wineCellar, on_delete=models.CASCADE, related_name="bookings"
+    )
+    spots_reserved = models.PositiveIntegerField(default=1)
+    timestamp = models.DateTimeField(auto_now_add=True)  # When the booking was made
+
+    def __str__(self):
+        return f"Booking by {self.user.username} for {self.wine_experience.title}"
+
+    # Override save to reduce available spots when a booking is created
+    def save(self, *args, **kwargs):
+        if not self.pk:  # Only reduce spots if this is a new booking
+            if self.wine_experience.has_available_spots(self.spots_reserved):
+                self.wine_experience.available_spots -= self.spots_reserved
+                self.wine_experience.save()
+            else:
+                raise ValueError("Not enough spots available for this experience.")
+        super().save(*args, **kwargs)
+
+
+# Signals to manage UserProfile creation/saving
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
