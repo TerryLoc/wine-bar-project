@@ -3,10 +3,10 @@
     Profile
 {% endblock title %}
 {% block content %}
-    <div class="container">
-        <h2>My Profile</h2>
+    <div class="container mt-4">
+        <h2 class="mb-4">My Profile</h2>
         <!-- Profile Information Display -->
-        <div class="profileView" id="profileView">
+        <div id="profileView" class="mb-4">
             <p>
                 <strong>Name:</strong> {{ profile.name }}
             </p>
@@ -19,8 +19,8 @@
             <button class="btn btn-secondary" onclick="toggleEditMode()">Edit Profile</button>
         </div>
         <!-- Edit Profile Form -->
-        <div id="profileEdit">
-            <form class="profileEdit" method="post">
+        <div id="profileEdit" class="mb-4 d-none">
+            <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit" class="btn btn-primary">Save Changes</button>
@@ -28,27 +28,37 @@
             </form>
         </div>
         <!-- Delete Profile Form -->
-        <form method="post" onsubmit="return confirm('Are you sure you want to delete your profile?');">
+        <form method="post"
+              class="mb-4"
+              onsubmit="return confirm('Are you sure you want to delete your profile?');">
             {% csrf_token %}
-            <button type="submit" name="delete_profile" class="btn btn-danger mt-4">Delete Profile</button>
+            <button type="submit" name="delete_profile" class="btn btn-danger">Delete Profile</button>
         </form>
         <!-- User's Bookings List -->
         <div class="user_bookings">
-            <h3>My Bookings</h3>
-            <ul>
-                {% for booking in bookings %}
-                    <li>
-                        {{ booking.title }} on {{ booking.date }}
-                        <form method="post" class="inline-form">
-                            {% csrf_token %}
-                            <input type="hidden" name="wine_id" value="{{ booking.id }}">
-                            <button type="submit" name="cancel_booking" class="btn btn-danger btn-sm">Cancel Booking</button>
-                        </form>
-                    </li>
-                {% empty %}
-                    <p>You haven't made any bookings yet.</p>
-                {% endfor %}
-            </ul>
+            <h3 class="mb-3">My Bookings</h3>
+            {% if bookings %}
+                <ul class="list-group">
+                    {% for booking in bookings %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>{{ booking.wine_experience.title }}</strong>
+                                <br>
+                                <small>Date: {{ booking.wine_experience.date }}</small>
+                                <br>
+                                <small>Spots Reserved: {{ booking.spots_reserved }}</small>
+                            </div>
+                            <form method="post" class="mb-0">
+                                {% csrf_token %}
+                                <input type="hidden" name="wine_id" value="{{ booking.wine_experience.id }}">
+                                <button type="submit" name="cancel_booking" class="btn btn-danger btn-sm">Cancel</button>
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>You haven't made any bookings yet.</p>
+            {% endif %}
         </div>
     </div>
 {% endblock content %}

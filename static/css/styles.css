@@ -196,6 +196,11 @@ strong .flip-horizontal {
   background-color: var(--bg-color);
 }
 
+.list-group-item {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
 @media screen and (max-width: 768px) {
   #info {
     display: flex;

@@ -6,8 +6,12 @@ setTimeout(function () {
   }
 }, 3000);
 
-// profile page edit mode toggle
+// Toggle between profile view and edit mode
 function toggleEditMode() {
-  const viewDiv = document.getElementById('profileView');
-  viewDiv.style.display = viewDiv.style.display === 'none' ? 'block' : 'none';
+  const profileView = document.getElementById('profileView');
+  const profileEdit = document.getElementById('profileEdit');
+  profileView.style.display =
+    profileView.style.display === 'none' ? 'block' : 'none';
+  profileEdit.style.display =
+    profileEdit.style.display === 'none' ? 'block' : 'none';
 }

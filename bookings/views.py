@@ -68,41 +68,52 @@ def register(request):
 
 @login_required
 def profile(request):
-    """
-    Display and update user profile information.
-    """
     profile, created = UserProfile.objects.get_or_create(user=request.user)
-    bookings = Booking.objects.filter(user=request.user)  # Retrieve user's bookings
+    bookings = Booking.objects.filter(user=request.user)
 
     if request.method == "POST":
+        # Handle profile deletion
         if "delete_profile" in request.POST:
             profile.delete()
             messages.success(request, "Profile deleted successfully.")
             return redirect("winery")
 
+        # Handle booking cancellation
         elif "cancel_booking" in request.POST:
-            booking_id = request.POST.get("booking_id")
-            booking = get_object_or_404(Booking, id=booking_id, user=request.user)
-            booking.wine_experience.available_spots += (
-                booking.spots_reserved
-            )  # Increment spots
-            booking.wine_experience.save()
-            booking.delete()
-            messages.success(request, "Booking canceled successfully.")
+            wine_id = request.POST.get("wine_id")
+            try:
+                wine = wineCellar.objects.get(id=wine_id)
+                booking = Booking.objects.get(user=request.user, wine_experience=wine)
+                wine.available_spots += booking.spots_reserved  # Update available spots
+                wine.save()
+                booking.delete()  # Remove the booking
+                messages.success(request, "Booking canceled successfully.")
+            except wineCellar.DoesNotExist:
+                messages.error(request, "The wine experience does not exist.")
+            except Booking.DoesNotExist:
+                messages.error(
+                    request, "You do not have a booking for this wine experience."
+                )
             return redirect("bookings:profile")
 
+        # Handle profile update
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
             messages.success(request, "Profile updated successfully.")
             return redirect("bookings:profile")
+
     else:
         form = UserProfileForm(instance=profile)
 
     return render(
         request,
         "bookings/profile.html",
-        {"form": form, "profile": profile, "bookings": bookings},
+        {
+            "form": form,
+            "profile": profile,
+            "bookings": bookings,
+        },
     )
 
 
