@@ -36,29 +36,36 @@
         </form>
         <!-- User's Bookings List -->
         <div class="user_bookings">
-            <h3 class="mb-3">My Bookings</h3>
-            {% if bookings %}
-                <ul class="list-group">
-                    {% for booking in bookings %}
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div>
-                                <strong>{{ booking.wine_experience.title }}</strong>
-                                <br>
-                                <small>Date: {{ booking.wine_experience.date }}</small>
-                                <br>
-                                <small>Spots Reserved: {{ booking.spots_reserved }}</small>
+            <h3>My Bookings</h3>
+            <ul>
+                {% for booking in bookings %}
+                    <li>
+                        <strong>{{ booking.wine_experience.title }}</strong> on {{ booking.wine_experience.date }}
+                        <br>
+                        Reserved spots: {{ booking.spots_reserved }}
+                        <form method="post" class="inline-form mt-2">
+                            {% csrf_token %}
+                            <input type="hidden" name="wine_id" value="{{ booking.wine_experience.id }}">
+                            <!-- Cancel specific number of spots -->
+                            <div class="form-group">
+                                <label for="spots_to_cancel_{{ booking.id }}">Cancel Spots:</label>
+                                <input type="number"
+                                       name="spots_to_cancel"
+                                       id="spots_to_cancel_{{ booking.id }}"
+                                       class="form-control d-inline"
+                                       style="width: 80px"
+                                       min="1"
+                                       max="{{ booking.spots_reserved }}">
+                                <button type="submit" name="cancel_booking" class="btn btn-danger btn-sm">Cancel Selected</button>
                             </div>
-                            <form method="post" class="mb-0">
-                                {% csrf_token %}
-                                <input type="hidden" name="wine_id" value="{{ booking.wine_experience.id }}">
-                                <button type="submit" name="cancel_booking" class="btn btn-danger btn-sm">Cancel</button>
-                            </form>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>You haven't made any bookings yet.</p>
-            {% endif %}
+                            <!-- Cancel the entire booking -->
+                            <button type="submit" name="cancel_all" class="btn btn-danger btn-sm mt-2">Cancel Entire Booking</button>
+                        </form>
+                    </li>
+                {% empty %}
+                    <p>You haven't made any bookings yet.</p>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock content %}

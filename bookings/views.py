@@ -72,37 +72,49 @@ def profile(request):
     bookings = Booking.objects.filter(user=request.user)
 
     if request.method == "POST":
-        # Handle profile deletion
         if "delete_profile" in request.POST:
             profile.delete()
             messages.success(request, "Profile deleted successfully.")
             return redirect("winery")
 
-        # Handle booking cancellation
         elif "cancel_booking" in request.POST:
             wine_id = request.POST.get("wine_id")
-            try:
-                wine = wineCellar.objects.get(id=wine_id)
-                booking = Booking.objects.get(user=request.user, wine_experience=wine)
-                wine.available_spots += booking.spots_reserved  # Update available spots
-                wine.save()
-                booking.delete()  # Remove the booking
-                messages.success(request, "Booking canceled successfully.")
-            except wineCellar.DoesNotExist:
-                messages.error(request, "The wine experience does not exist.")
-            except Booking.DoesNotExist:
-                messages.error(
-                    request, "You do not have a booking for this wine experience."
-                )
+            spots_to_cancel = int(request.POST.get("spots_to_cancel", 0))
+
+            wine = get_object_or_404(wineCellar, id=wine_id)
+            user_booking = Booking.objects.filter(
+                user=request.user, wine_experience=wine
+            ).first()
+
+            if user_booking:
+                # If cancelling all spots
+                if (
+                    spots_to_cancel >= user_booking.spots_reserved
+                    or "cancel_all" in request.POST
+                ):
+                    wine.available_spots += user_booking.spots_reserved
+                    wine.save()
+                    user_booking.delete()
+                    messages.success(request, "Booking canceled successfully.")
+                else:
+                    # Cancel only the requested number of spots
+                    wine.available_spots += spots_to_cancel
+                    wine.save()
+                    user_booking.spots_reserved -= spots_to_cancel
+                    user_booking.save()
+                    messages.success(
+                        request,
+                        f"{spots_to_cancel} spot(s) have been canceled successfully.",
+                    )
+            else:
+                messages.error(request, "No booking found to cancel.")
             return redirect("bookings:profile")
 
-        # Handle profile update
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
             messages.success(request, "Profile updated successfully.")
             return redirect("bookings:profile")
-
     else:
         form = UserProfileForm(instance=profile)
 
