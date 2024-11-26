@@ -35,7 +35,11 @@
                   <p>{{ wine.join_us_for }}</p>
                 </div>
                 {% if user.is_authenticated %}
-                  <a href="{% url 'bookings:book' wine.id %}" class="btn btn-warning">Book Now</a>
+                  <button type="button"
+                          class="btn btn-warning"
+                          data-toggle="modal"
+                          data-target="#bookingModal"
+                          data-wine-id="{{ wine.id }}">Book Now</button>
                 {% else %}
                   <a href="{% url 'bookings:register' %}" class="btn btn-warning">Uncork Access</a>
                 {% endif %}
@@ -52,14 +56,12 @@
             </div>
           </div>
         {% endfor %}
-
         <!-- Show message if this wine is the highlighted one -->
         {% if wine == highlighted_wine and message %}
           <div id="alert-message"
                class="alert alert-{{ message_type }} mt-2"
                role="alert">{{ message }}</div>
         {% endif %}
-        
       </div>
       <!-- Carousel controls -->
       <a class="carousel-control-prev"
@@ -76,6 +78,40 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
+    </div>
+  </div>
+  <!-- Booking Modal -->
+  <div class="modal fade"
+       id="bookingModal"
+       tabindex="-1"
+       role="dialog"
+       aria-labelledby="bookingModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bookingModalLabel">Book Your Experience</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"> X </span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="bookingForm" method="post" action="{% url 'bookings:book' 0 %}">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="numSpaces">Number of Spaces</label>
+              <input type="number"
+                     class="form-control"
+                     id="numSpaces"
+                     name="num_spaces"
+                     min="1"
+                     required>
+            </div>
+            <input type="hidden" id="wineId" name="wine_id">
+            <button type="submit" class="btn btn-primary">Confirm Booking</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 {% endblock content %}

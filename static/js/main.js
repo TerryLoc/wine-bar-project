@@ -15,3 +15,14 @@ function toggleEditMode() {
   profileEdit.style.display =
     profileEdit.style.display === 'none' ? 'block' : 'none';
 }
+
+// booking modal
+$('#bookingModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget); // Button that triggered the modal
+  var wineId = button.data('wine-id'); // Extract info from data-* attributes
+  var modal = $(this);
+  modal.find('#wineId').val(wineId);
+  modal
+    .find('#bookingForm')
+    .attr('action', '{% url "bookings:book" 0 %}'.replace('0', wineId));
+});
