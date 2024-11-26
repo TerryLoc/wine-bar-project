@@ -96,7 +96,10 @@
           </button>
         </div>
         <div class="modal-body">
-          <form id="bookingForm" method="post" action="{% url 'bookings:book' 0 %}">
+          <form id="bookingForm"
+                method="post"
+                action=""
+                data-url-template="{% url 'bookings:book' 0 %}">
             {% csrf_token %}
             <div class="form-group">
               <label for="numSpaces">Number of Spaces</label>

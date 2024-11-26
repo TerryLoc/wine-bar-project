@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import wineCellar, UserProfile, Booking
 from .forms import UserProfileForm
+from .forms import BookingForm
 
 
 # Wine experience views
@@ -16,37 +17,32 @@ def wine_list(request):
     return render(request, "bookings/wine_cellar.html", {"wines": wines})
 
 
-@login_required
+login_required
+
+
 def book_wine(request, wine_id):
     """
     Allow authenticated users to book a wine experience.
     """
     wine = get_object_or_404(wineCellar, id=wine_id)
-
-    try:
-        # Attempt to create a booking for the user
-        booking = Booking.objects.create(
-            user=request.user,
-            wine_experience=wine,
-            spots_reserved=1,  # Reserve 1 spot (can customize for multiple spots)
-        )
-        messages.success(
-            request,
-            f"Booking successful! You've reserved 1 spot for '{wine.title}'.",
-        )
-    except ValueError as e:
-        messages.error(request, str(e))
-
-    wines = wineCellar.objects.all()
-    return render(
-        request,
-        "bookings/wine_cellar.html",
-        {
-            "wines": wines,
-            "highlighted_wine": wine,
-            "message": messages.get_messages(request),
-        },
-    )
+    if request.method == "POST":
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            booking.user = request.user
+            booking.wine_experience = wine
+            try:
+                booking.save()
+                messages.success(
+                    request,
+                    f"Booking successful! You've reserved {booking.spots_reserved} spot(s) for '{wine.title}'.",
+                )
+            except ValueError as e:
+                messages.error(request, str(e))
+            return redirect("bookings:wine_cellar")
+    else:
+        form = BookingForm()
+    return render(request, "bookings/profile.html", {"form": form, "wine": wine})
 
 
 # User authentication views

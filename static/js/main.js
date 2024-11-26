@@ -17,12 +17,16 @@ function toggleEditMode() {
 }
 
 // booking modal
-$('#bookingModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget); // Button that triggered the modal
-  var wineId = button.data('wine-id'); // Extract info from data-* attributes
-  var modal = $(this);
-  modal.find('#wineId').val(wineId);
-  modal
-    .find('#bookingForm')
-    .attr('action', '{% url "bookings:book" 0 %}'.replace('0', wineId));
+document.addEventListener('DOMContentLoaded', function () {
+  $('#bookingModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget); // Button that triggered the modal
+    var wineId = button.data('wine-id'); // Extract info from data-* attributes
+    var modal = $(this);
+    modal.find('#wineId').val(wineId);
+    var actionUrl = modal
+      .find('#bookingForm')
+      .data('url-template')
+      .replace('0', wineId);
+    modal.find('#bookingForm').attr('action', actionUrl);
+  });
 });
