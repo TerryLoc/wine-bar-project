@@ -19,6 +19,16 @@ function toggleEditMode() {
   }
 }
 
+// Confirmation dialog for saving changes
+function confirmSaveChanges() {
+  const form = document.querySelector('#profileEdit form');
+  if (!form.checkValidity()) {
+    alert('Please correct the highlighted errors before saving.');
+    return false;
+  }
+  return confirm('Are you sure you want to save the changes?');
+}
+
 // booking modal
 document.addEventListener('DOMContentLoaded', function () {
   $('#bookingModal').on('show.bs.modal', function (event) {
