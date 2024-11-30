@@ -7,15 +7,17 @@
         <h2 class="mb-4">My Profile</h2>
         <!-- Profile Information Display -->
         <div id="profileView" class="mb-4">
-            <p>
-                <strong>Name:</strong> {{ profile.name }}
-            </p>
-            <p>
-                <strong>Email:</strong> {{ profile.email }}
-            </p>
-            <p>
-                <strong>Contact Number:</strong> {{ profile.contact_number }}
-            </p>
+            <div class="user_info">
+                <p>
+                    <strong class="profile_title">Name:</strong> {{ profile.name }}
+                </p>
+                <p>
+                    <strong class="profile_title">Email:</strong> {{ profile.email }}
+                </p>
+                <p>
+                    <strong class="profile_title">Contact Number:</strong> {{ profile.contact_number }}
+                </p>
+            </div>
             <button class="btn btn-secondary" onclick="toggleEditMode()"">Edit Profile
             </button>
         </div>
