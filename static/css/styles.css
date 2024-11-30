@@ -186,12 +186,12 @@ strong .flip-horizontal {
 }
 
 /* Profile */
-.profileView {
+#profileView {
   display: block;
   background-color: var(--bg-color);
 }
 
-.profileEdit {
+#profileEdit {
   display: none;
   background-color: var(--bg-color);
 }

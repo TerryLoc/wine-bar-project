@@ -10,10 +10,13 @@ setTimeout(function () {
 function toggleEditMode() {
   const profileView = document.getElementById('profileView');
   const profileEdit = document.getElementById('profileEdit');
-  profileView.style.display =
-    profileView.style.display === 'none' ? 'block' : 'none';
-  profileEdit.style.display =
-    profileEdit.style.display === 'none' ? 'block' : 'none';
+  if (profileView.style.display === 'none') {
+    profileView.style.display = 'block';
+    profileEdit.style.display = 'none';
+  } else {
+    profileView.style.display = 'none';
+    profileEdit.style.display = 'block';
+  }
 }
 
 // booking modal
