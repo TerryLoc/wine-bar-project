@@ -5,6 +5,7 @@
   --text-color2: rgb(187, 187, 187);
   --text-color3: rgb(56, 56, 56);
   --text-alert: rgb(211, 25, 44);
+  --gold-color: #ffc107;
   --bg-color: rgba(71, 71, 71, 0.9);
   --bg-color2: rgba(21, 21, 21, 0.9);
   --all-tsh: 1px 1px 1px rgba(0, 0, 0, 0.6);
@@ -18,7 +19,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  color: aliceblue;
+  color: var(--text-color);
 }
 
 body::after {
@@ -106,7 +107,7 @@ strong .flip-horizontal {
 }
 
 .mb-4 strong {
-  color: #ffc107;
+  color: var(--gold-color);
   font-size: 3.75rem;
 }
 
@@ -116,7 +117,7 @@ strong .flip-horizontal {
   width: 10%;
   opacity: 0.3;
   color: var(--text-color);
-  background-color: #ffb600;
+  background-color: var(--gold-color);
   height: 20px;
   width: 20px;
   border-radius: 50%;
@@ -165,7 +166,7 @@ strong .flip-horizontal {
 }
 
 #info strong {
-  color: #ffc107;
+  color: var(--gold-color);
 }
 
 .about_tasting {
@@ -278,6 +279,77 @@ strong .flip-horizontal {
 .modal-backdrop.show {
   opacity: 0.5;
   z-index: 1;
+}
+
+/* login and register pages */
+.login_section {
+  background-color: var(--bg-color2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px auto;
+  padding: 50px;
+  max-width: 700px;
+  border-radius: 10px;
+}
+
+.login_section ul,
+.login_section span {
+  color: var(--text-alert);
+}
+
+.login_section h2 {
+  font-size: 2.25rem;
+  margin-bottom: 40px;
+  text-align: center;
+  color: var(--gold-color);
+}
+
+.login_section form {
+  font-size: 1.3rem;
+}
+
+.login_section p {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px auto;
+}
+
+.login_section input {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  border-radius: 5px;
+  padding: 15px 5px;
+  letter-spacing: 1px;
+  margin: 10px auto;
+}
+
+.login_section button {
+  margin-top: 20px;
+  width: 50%;
+  color: var(--bg-color2);
+  background-color: var(--gold-color);
+  border: none;
+  text-transform: uppercase;
+}
+
+.login_section .helptext {
+  display: none;
+}
+
+.login_section ul {
+  list-style-type: none;
+  color: var(--text-alert);
+  background-color: var(--bg-color2);
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--text-color);
+}
+
+.login_section ul li {
+  margin: 5px;
 }
 
 @media screen and (max-width: 768px) {
