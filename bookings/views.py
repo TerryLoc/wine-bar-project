@@ -75,12 +75,39 @@ def profile(request):
 
         elif "cancel_booking" in request.POST:
             wine_id = request.POST.get("wine_id")
-            spots_to_cancel = int(request.POST.get("spots_to_cancel", 0))
+            # Get the number of spots to cancel
+            try:
+                spots_to_cancel = int(request.POST.get("spots_to_cancel", 0))
+            except ValueError:
+                messages.error(request, "Invalid number of spots to cancel.")
+                return redirect("bookings:profile")
 
             wine = get_object_or_404(wineCellar, id=wine_id)
             user_booking = Booking.objects.filter(
                 user=request.user, wine_experience=wine
             ).first()
+            if user_booking:
+                # If cancelling all spots
+                if (
+                    spots_to_cancel >= user_booking.spots_reserved
+                    or "cancel_all" in request.POST
+                ):
+                    wine.available_spots += user_booking.spots_reserved
+                    wine.save()
+                    user_booking.delete()
+                    messages.success(request, "Booking canceled successfully.")
+                else:
+                    # Cancel only the requested number of spots
+                    wine.available_spots += spots_to_cancel
+                    wine.save()
+                    user_booking.spots_reserved -= spots_to_cancel
+                    user_booking.save()
+                    messages.success(
+                        request,
+                        f"{spots_to_cancel} spot(s) have been canceled successfully.",
+                    )
+            else:
+                messages.error(request, "No booking found to cancel.")
 
             if user_booking:
                 # If cancelling all spots

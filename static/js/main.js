@@ -22,7 +22,7 @@ function toggleEditMode() {
 // Confirmation dialog for saving changes
 function confirmSaveChanges() {
   const form = document.querySelector('#profileEdit form');
-  if (!form.checkValidity()) {
+  if (!form.checkValidity(false)) {
     alert('Please correct the highlighted errors before saving.');
     return false;
   }

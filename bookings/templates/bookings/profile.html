@@ -22,8 +22,8 @@
             </button>
         </div>
         <!-- Edit Profile Form -->
-        <div id="profileEdit" class="mb-4" onsubmit="return confirmSaveChanges()">
-            <form method="post">
+        <div id="profileEdit" class="mb-4">
+            <form method="post" onsubmit="return confirmSaveChanges()" >
                 {% csrf_token %}
                 {{ form.as_p }}
                 {% if form.errors %}

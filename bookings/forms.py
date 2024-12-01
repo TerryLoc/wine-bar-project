@@ -11,6 +11,7 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ["name", "email", "contact_number"]
 
+    # Form fields with custom validation
     name = forms.CharField(
         required=True,
         widget=forms.TextInput(
@@ -34,6 +35,7 @@ class UserProfileForm(forms.ModelForm):
         ),
     )
 
+    # Clean name field to ensure it only contains letters and spaces
     def clean_name(self):
         name = self.cleaned_data.get("name")  # Get name
         if not name:
@@ -42,6 +44,7 @@ class UserProfileForm(forms.ModelForm):
             raise ValidationError("Name must contain only letters and spaces.")
         return name
 
+    # Clean email field to ensure it is a valid email address
     def clean_email(self):
         email = self.cleaned_data.get("email")  # Get email
         if not email:
@@ -50,6 +53,7 @@ class UserProfileForm(forms.ModelForm):
             raise ValidationError("Enter a valid email address.")
         return email
 
+    # Clean contact number field to ensure it only contains numbers, spaces, or dashes
     def clean_contact_number(self):
         contact_number = self.cleaned_data.get("contact_number")  # Get contact number
         if not contact_number:
