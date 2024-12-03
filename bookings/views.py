@@ -31,8 +31,8 @@ def book_wine(request, wine_id):
             booking = form.save(commit=False)
             booking.user = request.user
             booking.wine_experience = wine
+            booking.save()
             try:
-                booking.save()
                 messages.success(
                     request,
                     f"Booking successful! You've reserved {booking.spots_reserved} spot(s) for '{wine.title}'.",
@@ -65,6 +65,9 @@ def register(request):
 @login_required
 def profile(request):
     profile, created = UserProfile.objects.get_or_create(user=request.user)
+    if created:
+        profile.name = request.user.username  # Example: prefill new profile fields.
+        profile.save()
     bookings = Booking.objects.filter(user=request.user)
 
     if request.method == "POST":
