@@ -20,10 +20,8 @@ def wine_list(request):
 login_required
 
 
+# wine booking view with form
 def book_wine(request, wine_id):
-    """
-    Allow authenticated users to book a wine experience.
-    """
     wine = get_object_or_404(wineCellar, id=wine_id)
     if request.method == "POST":
         form = BookingForm(request.POST)
@@ -31,15 +29,15 @@ def book_wine(request, wine_id):
             booking = form.save(commit=False)
             booking.user = request.user
             booking.wine_experience = wine
-            booking.save()
             try:
+                booking.save()
                 messages.success(
                     request,
                     f"Booking successful! You've reserved {booking.spots_reserved} spot(s) for '{wine.title}'.",
                 )
             except ValueError as e:
                 messages.error(request, str(e))
-            return redirect("bookings:wine_cellar")
+            return redirect("bookings:profile")
     else:
         form = BookingForm()
     return render(request, "bookings/profile.html", {"form": form, "wine": wine})
@@ -65,9 +63,6 @@ def register(request):
 @login_required
 def profile(request):
     profile, created = UserProfile.objects.get_or_create(user=request.user)
-    if created:
-        profile.name = request.user.username  # Example: prefill new profile fields.
-        profile.save()
     bookings = Booking.objects.filter(user=request.user)
 
     if request.method == "POST":
@@ -89,29 +84,6 @@ def profile(request):
             user_booking = Booking.objects.filter(
                 user=request.user, wine_experience=wine
             ).first()
-            if user_booking:
-                # If cancelling all spots
-                if (
-                    spots_to_cancel >= user_booking.spots_reserved
-                    or "cancel_all" in request.POST
-                ):
-                    wine.available_spots += user_booking.spots_reserved
-                    wine.save()
-                    user_booking.delete()
-                    messages.success(request, "Booking canceled successfully.")
-                else:
-                    # Cancel only the requested number of spots
-                    wine.available_spots += spots_to_cancel
-                    wine.save()
-                    user_booking.spots_reserved -= spots_to_cancel
-                    user_booking.save()
-                    messages.success(
-                        request,
-                        f"{spots_to_cancel} spot(s) have been canceled successfully.",
-                    )
-            else:
-                messages.error(request, "No booking found to cancel.")
-
             if user_booking:
                 # If cancelling all spots
                 if (
