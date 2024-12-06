@@ -1,79 +1,65 @@
 {% extends "layout.html" %}
-{% block title %}
-    Profile
-{% endblock title %}
+
 {% block content %}
-    <div class="container mt-4">
-        <h2 class="mb-4">My Profile</h2>
-        <!-- Profile Information Display -->
-        <div id="profileView" class="mb-4">
-            <div class="user_info">
-                <p>
-                    <strong class="profile_title">Name:</strong> {{ profile.name }}
-                </p>
-                <p>
-                    <strong class="profile_title">Email:</strong> {{ profile.email }}
-                </p>
-                <p>
-                    <strong class="profile_title">Contact Number:</strong> {{ profile.contact_number }}
-                </p>
-            </div>
-            <button class="btn btn-secondary" onclick="toggleEditMode()"">Edit Profile
-            </button>
-        </div>
-        <!-- Edit Profile Form -->
-        <div id="profileEdit" class="mb-4">
-            <form method="post" onsubmit="return confirmSaveChanges()" >
-                {% csrf_token %}
-                {{ form.as_p }}
-                {% if form.errors %}
-                    <ul class="alert alert-danger">
-                        {% for field, errors in form.errors.items %}<li>{{ field }}: {{ errors|join:", " }}</li>{% endfor %}
-                    </ul>
-                {% endif %}
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                    <button type="button" class="btn btn-secondary" onclick="toggleEditMode()">Cancel</button>
-                </form>
-            </div>
-            <!-- Delete Profile Form -->
-            <form method="post"
-                  class="mb-4"
-                  onsubmit="return confirm('Are you sure you want to delete your profile?');">
-                {% csrf_token %}
-                <button type="submit" name="delete_profile" class="btn btn-danger">Delete Profile</button>
+  <div class="container mt-4">
+    <h1 class="mb-4">Profile</h1>
+    <form method="post" action="{% url 'bookings:profile' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{ form.name.value }}">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" value="{{ form.email.value }}">
+      </div>
+      <div class="form-group">
+        <label for="contact_number">Contact Number</label>
+        <input type="text" class="form-control" id="contact_number" name="contact_number" value="{{ form.contact_number.value }}">
+      </div>
+      <button type="submit" class="btn btn-primary">Update Profile</button>
+    </form>
+
+    <hr>
+
+    <h2 class="mt-4">My Bookings</h2>
+    <div class="user_bookings">
+      <ul>
+        {% for booking in bookings %}
+          <li>
+            <strong>{{ booking.wine_experience.title }}</strong> on {{ booking.wine_experience.date }}
+            <br>
+            Reserved spots: {{ booking.spots_reserved }}
+            <form method="post" class="inline-form mt-2" action="{% url 'bookings:profile' %}">
+              {% csrf_token %}
+              <input type="hidden" name="wine_id" value="{{ booking.wine_experience.id }}">
+              <!-- Cancel specific number of spots -->
+              <div class="form-group">
+                <label for="spots_to_cancel_{{ booking.id }}">Cancel Spots:</label>
+                <input type="number"
+                       name="spots_to_cancel"
+                       id="spots_to_cancel_{{ booking.id }}"
+                       class="form-control d-inline"
+                       style="width: 80px"
+                       min="1"
+                       max="{{ booking.spots_reserved }}">
+                <button type="submit" name="cancel_booking" class="btn btn-danger btn-sm">Cancel Selected</button>
+              </div>
+              <!-- Cancel the entire booking -->
+              <button type="submit" name="cancel_all" class="btn btn-danger btn-sm mt-2">Cancel Entire Booking</button>
             </form>
-            <!-- User's Bookings List -->
-            <div class="user_bookings">
-                <h3>My Bookings</h3>
-                <ul>
-                    {% for booking in bookings %}
-                        <li>
-                            <strong>{{ booking.wine_experience.title }}</strong> on {{ booking.wine_experience.date }}
-                            <br>
-                            Reserved spots: {{ booking.spots_reserved }}
-                            <form method="post" class="inline-form mt-2">
-                                {% csrf_token %}
-                                <input type="hidden" name="wine_id" value="{{ booking.wine_experience.id }}">
-                                <!-- Cancel specific number of spots -->
-                                <div class="form-group">
-                                    <label for="spots_to_cancel_{{ booking.id }}">Cancel Spots:</label>
-                                    <input type="number"
-                                           name="spots_to_cancel"
-                                           id="spots_to_cancel_{{ booking.id }}"
-                                           class="form-control d-inline"
-                                           style="width: 80px"
-                                           min="1"
-                                           max="{{ booking.spots_reserved }}">
-                                    <button type="submit" name="cancel_booking" class="btn btn-danger btn-sm">Cancel Selected</button>
-                                </div>
-                                <!-- Cancel the entire booking -->
-                                <button type="submit" name="cancel_all" class="btn btn-danger btn-sm mt-2">Cancel Entire Booking</button>
-                            </form>
-                        </li>
-                    {% empty %}
-                        <p>You haven't made any bookings yet.</p>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    {% endblock content %}
+          </li>
+        {% empty %}
+          <p>You haven't made any bookings yet.</p>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <hr>
+
+    <form method="post" action="{% url 'bookings:profile' %}">
+      {% csrf_token %}
+      <button type="submit" name="delete_profile" class="btn btn-danger">Delete Profile</button>
+    </form>
+  </div>
+{% endblock content %}

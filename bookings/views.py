@@ -1,14 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib import messages
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import wineCellar, UserProfile, Booking
-from .forms import UserProfileForm
-from .forms import BookingForm
+from django.contrib import messages
+from .models import wineCellar, Booking, UserProfile
+from .forms import BookingForm, UserProfileForm
+from django.contrib.auth.forms import UserCreationForm
 
 
-# Wine experience views
 def wine_list(request):
     """
     Display the list of available wine experiences.
@@ -17,10 +14,7 @@ def wine_list(request):
     return render(request, "bookings/wine_cellar.html", {"wines": wines})
 
 
-login_required
-
-
-# wine booking view with form
+@login_required
 def book_wine(request, wine_id):
     wine = get_object_or_404(wineCellar, id=wine_id)
     if request.method == "POST":
@@ -38,23 +32,20 @@ def book_wine(request, wine_id):
             except ValueError as e:
                 messages.error(request, str(e))
             return redirect("bookings:profile")
+        else:
+            messages.error(request, "Failed to book the experience. Please try again.")
     else:
         form = BookingForm()
-    return render(request, "bookings/profile.html", {"form": form, "wine": wine})
+    return render(request, "bookings/booking_form.html", {"form": form, "wine": wine})
 
 
-# User authentication views
 def register(request):
-    """
-    Register a new user.
-    """
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get("username")
-            messages.success(request, f"Account created for {username}!")
-            return redirect("bookings:login")  # Redirect to login after registration
+            user = form.save()
+            messages.success(request, f"Account created for {user.username}.")
+            return redirect("bookings:login")
     else:
         form = UserCreationForm()
     return render(request, "bookings/register.html", {"form": form})
@@ -62,82 +53,57 @@ def register(request):
 
 @login_required
 def profile(request):
-    profile, created = UserProfile.objects.get_or_create(user=request.user)
+    """
+    Display and manage user profile.
+    """
+    profile, _ = UserProfile.objects.get_or_create(user=request.user)
     bookings = Booking.objects.filter(user=request.user)
 
     if request.method == "POST":
         if "delete_profile" in request.POST:
             profile.delete()
-            messages.success(request, "Profile deleted successfully.")
+            messages.success(request, "Profile deleted.")
             return redirect("winery")
-
         elif "cancel_booking" in request.POST:
-            wine_id = request.POST.get("wine_id")
-            # Get the number of spots to cancel
             try:
+                wine_id = int(request.POST.get("wine_id"))
                 spots_to_cancel = int(request.POST.get("spots_to_cancel", 0))
-            except ValueError:
-                messages.error(request, "Invalid number of spots to cancel.")
+            except (ValueError, TypeError):
+                messages.error(request, "Invalid booking data.")
                 return redirect("bookings:profile")
 
             wine = get_object_or_404(wineCellar, id=wine_id)
-            user_booking = Booking.objects.filter(
+            booking = Booking.objects.filter(
                 user=request.user, wine_experience=wine
             ).first()
-            if user_booking:
-                # If cancelling all spots
+            if booking:
                 if (
-                    spots_to_cancel >= user_booking.spots_reserved
+                    spots_to_cancel >= booking.spots_reserved
                     or "cancel_all" in request.POST
                 ):
-                    wine.available_spots += user_booking.spots_reserved
+                    wine.available_spots += booking.spots_reserved
                     wine.save()
-                    user_booking.delete()
-                    messages.success(request, "Booking canceled successfully.")
+                    booking.delete()
                 else:
-                    # Cancel only the requested number of spots
                     wine.available_spots += spots_to_cancel
                     wine.save()
-                    user_booking.spots_reserved -= spots_to_cancel
-                    user_booking.save()
-                    messages.success(
-                        request,
-                        f"{spots_to_cancel} spot(s) have been canceled successfully.",
-                    )
+                    booking.spots_reserved -= spots_to_cancel
+                    booking.save()
+                messages.success(request, "Booking updated successfully.")
             else:
-                messages.error(request, "No booking found to cancel.")
+                messages.error(request, "Booking not found.")
             return redirect("bookings:profile")
-
-        form = UserProfileForm(request.POST, instance=profile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Profile updated successfully.")
-            return redirect("bookings:profile")
+        else:
+            form = UserProfileForm(request.POST, instance=profile)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Profile updated successfully.")
+                return redirect("bookings:profile")
+            else:
+                messages.error(request, "Failed to update profile. Please try again.")
     else:
         form = UserProfileForm(instance=profile)
 
     return render(
-        request,
-        "bookings/profile.html",
-        {
-            "form": form,
-            "profile": profile,
-            "bookings": bookings,
-        },
+        request, "bookings/profile.html", {"form": form, "bookings": bookings}
     )
-
-
-# Login view with authentication
-def login_view(request):
-    """
-    Handle user login functionality.
-    """
-    if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect("bookings:profile")  # Redirect to profile after login
-    else:
-        form = AuthenticationForm()
-    return render(request, "bookings/login.html", {"form": form})

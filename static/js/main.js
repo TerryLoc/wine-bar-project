@@ -1,4 +1,4 @@
-// Hide the alert message after 5 seconds (5000ms) on the booking page
+// Hide the alert message after 3 seconds (3000ms) on the booking page
 setTimeout(function () {
   var alertMessage = document.getElementById('alert-message');
   if (alertMessage) {
@@ -36,10 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var wineId = button.data('wine-id'); // Extract info from data-* attributes
     var modal = $(this);
     modal.find('#wineId').val(wineId);
-    var actionUrl = modal
-      .find('#bookingForm')
-      .data('url-template')
-      .replace('0', wineId);
+    var actionUrlTemplate = modal.find('#bookingForm').data('url-template');
+    var actionUrl = actionUrlTemplate.replace('0', wineId);
     modal.find('#bookingForm').attr('action', actionUrl);
   });
 });
