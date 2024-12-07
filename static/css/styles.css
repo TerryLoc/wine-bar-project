@@ -276,9 +276,25 @@ strong .flip-horizontal {
 }
 
 /* modal for booking */
-.modal-backdrop.show {
-  opacity: 0.5;
-  z-index: 1;
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px); /* Adjust the blur radius as needed */
+}
+
+.modal-dialog {
+  margin-top: 200px;
+}
+
+.modal-content {
+  background-color: var(--bg-color2);
+  color: var(--text-color);
+  color: var(--gold-color);
+  z-index: 10;
+}
+
+.modal-backdrop.fade.show {
+  display: none;
 }
 
 /* login and register pages */

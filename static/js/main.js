@@ -40,4 +40,28 @@ document.addEventListener('DOMContentLoaded', function () {
     var actionUrl = actionUrlTemplate.replace('0', wineId);
     modal.find('#bookingForm').attr('action', actionUrl);
   });
+
+  // booking form submission via AJAX
+  $('#bookingForm').on('submit', function (event) {
+    event.preventDefault();
+    var form = $(this);
+    var actionUrl = form.attr('action');
+    $.ajax({
+      type: 'POST',
+      url: actionUrl,
+      data: form.serialize(),
+      success: function (response) {
+        if (response.success) {
+          $('#bookingModal').modal('hide');
+          $('#confirmationMessage').text(response.message);
+          $('#confirmationModal').modal('show');
+        } else {
+          alert(response.message);
+        }
+      },
+      error: function () {
+        alert('An error occurred. Please try again.');
+      },
+    });
+  });
 });

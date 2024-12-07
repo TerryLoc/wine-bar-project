@@ -4,6 +4,7 @@ from django.contrib import messages
 from .models import wineCellar, Booking, UserProfile
 from .forms import BookingForm, UserProfileForm
 from django.contrib.auth.forms import UserCreationForm
+from django.http import JsonResponse  # For AJAX requests
 
 
 def wine_list(request):
@@ -25,15 +26,20 @@ def book_wine(request, wine_id):
             booking.wine_experience = wine
             try:
                 booking.save()
-                messages.success(
-                    request,
-                    f"Booking successful! You've reserved {booking.spots_reserved} spot(s) for '{wine.title}'.",
-                )
+                response_data = {
+                    "success": True,
+                    "message": f"Booking successful! You've reserved {booking.spots_reserved} spot(s) for '{wine.title}'.",
+                }
+                return JsonResponse(response_data)
             except ValueError as e:
-                messages.error(request, str(e))
-            return redirect("bookings:profile")
+                response_data = {"success": False, "message": str(e)}
+                return JsonResponse(response_data)
         else:
-            messages.error(request, "Failed to book the experience. Please try again.")
+            response_data = {
+                "success": False,
+                "message": "Failed to book the experience. Please try again.",
+            }
+            return JsonResponse(response_data)
     else:
         form = BookingForm()
     return render(request, "bookings/booking_form.html", {"form": form, "wine": wine})
