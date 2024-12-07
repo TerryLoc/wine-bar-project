@@ -406,11 +406,12 @@ strong .flip-horizontal {
 
 .user_bookings ul li {
   margin: 10px;
-  padding: 10px;
+  padding: 20px;
   background-color: var(--bg-color2);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  font-size: 1.25rem;
 }
 
 .btn-group-sm > .btn,
