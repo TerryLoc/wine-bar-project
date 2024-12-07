@@ -4,7 +4,7 @@ from django.contrib import messages
 from .models import wineCellar, Booking, UserProfile
 from .forms import BookingForm, UserProfileForm
 from django.contrib.auth.forms import UserCreationForm
-from django.http import JsonResponse  # For AJAX requests
+from django.http import JsonResponse
 
 
 def wine_list(request):
@@ -66,55 +66,52 @@ def profile(request):
     bookings = Booking.objects.filter(user=request.user)
 
     if request.method == "POST":
-        if "delete_profile" in request.POST:
-            profile.delete()
-            messages.success(request, "Profile deleted.")
-            return redirect("winery")
-        elif "cancel_booking" in request.POST:
-            try:
-                wine_id = int(request.POST.get("wine_id"))
-                spots_to_cancel = int(request.POST.get("spots_to_cancel", 0))
-            except (ValueError, TypeError):
-                messages.error(request, "Invalid booking data.")
-                return redirect("bookings:profile")
-
-            wine = get_object_or_404(wineCellar, id=wine_id)
-            booking = Booking.objects.filter(
-                user=request.user, wine_experience=wine
-            ).first()
-            if booking:
-                if (
-                    spots_to_cancel >= booking.spots_reserved
-                    or "cancel_all" in request.POST
-                ):
-                    wine.available_spots += booking.spots_reserved
-                    wine.save()
-                    booking.delete()
-                else:
-                    wine.available_spots += spots_to_cancel
-                    wine.save()
-                    booking.spots_reserved -= spots_to_cancel
-                    booking.save()
-                messages.success(request, "Booking updated successfully.")
-            else:
-                messages.error(request, "Booking not found.")
+        form = UserProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user.first_name = form.cleaned_data["first_name"]
+            profile.user.last_name = form.cleaned_data["last_name"]
+            profile.user.email = profile.email
+            profile.user.save()
+            profile.save()
+            messages.success(request, "Profile updated successfully.")
             return redirect("bookings:profile")
         else:
-            form = UserProfileForm(request.POST, instance=profile)
-            if form.is_valid():
-                profile = form.save(commit=False)
-                profile.user.first_name = form.cleaned_data["first_name"]
-                profile.user.last_name = form.cleaned_data["last_name"]
-                profile.user.email = profile.email
-                profile.user.save()
-                profile.save()
-                messages.success(request, "Profile updated successfully.")
-                return redirect("bookings:profile")
-            else:
-                messages.error(request, "Failed to update profile. Please try again.")
+            messages.error(request, "Failed to update profile. Please try again.")
     else:
         form = UserProfileForm(instance=profile)
 
     return render(
         request, "bookings/profile.html", {"form": form, "bookings": bookings}
     )
+
+
+@login_required
+def cancel_booking(request):
+    if request.method == "POST":
+        try:
+            wine_id = int(request.POST.get("wine_id"))
+            spots_to_cancel = int(request.POST.get("spots_to_cancel"))
+        except (ValueError, TypeError):
+            return JsonResponse({"success": False, "message": "Invalid booking data."})
+
+        wine = get_object_or_404(wineCellar, id=wine_id)
+        booking = Booking.objects.filter(
+            user=request.user, wine_experience=wine
+        ).first()
+        if booking:
+            if spots_to_cancel >= booking.spots_reserved:
+                wine.available_spots += booking.spots_reserved
+                wine.save()
+                booking.delete()
+            else:
+                wine.available_spots += spots_to_cancel
+                wine.save()
+                booking.spots_reserved -= spots_to_cancel
+                booking.save()
+            return JsonResponse(
+                {"success": True, "message": "Booking updated successfully."}
+            )
+        else:
+            return JsonResponse({"success": False, "message": "Booking not found."})
+    return JsonResponse({"success": False, "message": "Invalid request."})

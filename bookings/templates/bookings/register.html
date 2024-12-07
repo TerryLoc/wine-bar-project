@@ -3,37 +3,39 @@
     <div class="login_section">
         <h2>Register</h2>
         <a href="{% url 'bookings:login' %}" class="btn btn-secondary">Already a member</a>
-        <form method="post">
+        <form class="register-form" method="post">
             {% csrf_token %}
             {{ form.non_field_errors }}
-            <div class="form-group">
-                <label for="{{ form.username.id_for_label }}">Username</label>
-                {{ form.username }}
-                {% if form.username.errors %}<div class="text-danger">{{ form.username.errors }}</div>{% endif %}
-            </div>
-            <div class="form-group">
-                <label for="{{ form.password1.id_for_label }}">Password</label>
-                <div class="input-group">
-                    {{ form.password1 }}
-                    <div class="input-group-append">
-                        <span class="input-group-text">
-                            <i class="fa fa-eye cursor-pointer" id="togglePassword1"></i>
-                        </span>
-                    </div>
+            <div class="input-info">
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}">Username</label>
+                    {{ form.username }}
+                    {% if form.username.errors %}<div class="text-danger">{{ form.username.errors }}</div>{% endif %}
                 </div>
-                {% if form.password1.errors %}<div class="text-danger">{{ form.password1.errors }}</div>{% endif %}
-            </div>
-            <div class="form-group">
-                <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
-                <div class="input-group">
-                    {{ form.password2 }}
-                    <div class="input-group-append">
-                        <span class="input-group-text">
-                            <i class="fa fa-eye cursor-pointer" id="togglePassword2"></i>
-                        </span>
+                <div class="form-group">
+                    <label for="{{ form.password1.id_for_label }}">Password</label>
+                    <div class="input-group">
+                        {{ form.password1 }}
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="fa fa-eye cursor-pointer" id="togglePassword1"></i>
+                            </span>
+                        </div>
                     </div>
+                    {% if form.password1.errors %}<div class="text-danger">{{ form.password1.errors }}</div>{% endif %}
                 </div>
-                {% if form.password2.errors %}<div class="text-danger">{{ form.password2.errors }}</div>{% endif %}
+                <div class="form-group">
+                    <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+                    <div class="input-group">
+                        {{ form.password2 }}
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="fa fa-eye cursor-pointer" id="togglePassword2"></i>
+                            </span>
+                        </div>
+                    </div>
+                    {% if form.password2.errors %}<div class="text-danger">{{ form.password2.errors }}</div>{% endif %}
+                </div>
             </div>
             <button type="submit" class="btn btn-warning">Start Tasting</button>
         </form>

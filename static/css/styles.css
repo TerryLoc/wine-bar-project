@@ -254,16 +254,35 @@ strong .flip-horizontal {
 }
 
 /* register */
-.form-group {
+.register-form {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.input-info {
   margin: 10px auto;
+  width: 80%;
+}
+
+.form-group {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .form-group label {
   font-size: 1.25rem;
   margin-top: 25px;
   margin-bottom: 5px;
+  margin-left: 0;
+}
+
+.login_section input {
+  margin: 0;
 }
 
 .form-control {
@@ -298,13 +317,17 @@ strong .flip-horizontal {
   display: none;
 }
 
+.close {
+  color: var(--text-color);
+}
+
 /* login and register pages */
 .login_section {
   background-color: var(--bg-color2);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 100px auto;
+  margin: 60px auto;
   padding: 50px;
   max-width: 700px;
   border-radius: 10px;
@@ -339,7 +362,6 @@ strong .flip-horizontal {
   border-radius: 5px;
   padding: 15px 5px;
   letter-spacing: 1px;
-  margin: 10px auto;
 }
 
 .login_section button {
@@ -357,15 +379,32 @@ strong .flip-horizontal {
 
 .login_section ul {
   list-style-type: none;
-  color: var(--text-alert);
-  background-color: var(--bg-color2);
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid var(--text-color);
+  padding: 10px 0;
 }
 
 .login_section ul li {
   margin: 5px;
+}
+
+/* user bookings on profile page */
+.user_bookings {
+  display: grid;
+  justify-items: flex-start;
+  margin: 50px auto;
+  background-color: var(--bg-color);
+  border-radius: 10px;
+}
+
+.user_bookings ul {
+  list-style-type: none;
+  padding: 20px;
+}
+
+.user_bookings ul li {
+  margin: 10px;
+  padding: 10px;
+  background-color: var(--bg-color2);
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 768px) {
