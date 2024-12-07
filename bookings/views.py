@@ -102,7 +102,12 @@ def profile(request):
         else:
             form = UserProfileForm(request.POST, instance=profile)
             if form.is_valid():
-                form.save()
+                profile = form.save(commit=False)
+                profile.user.first_name = form.cleaned_data["first_name"]
+                profile.user.last_name = form.cleaned_data["last_name"]
+                profile.user.email = profile.email
+                profile.user.save()
+                profile.save()
                 messages.success(request, "Profile updated successfully.")
                 return redirect("bookings:profile")
             else:

@@ -2,68 +2,80 @@ from django import forms
 from .models import UserProfile
 from .models import Booking
 from django.core.exceptions import ValidationError
+from django.core.validators import RegexValidator, EmailValidator
 import re  # For regex validation
 
 
 #  Form for user profile
 class UserProfileForm(forms.ModelForm):
-    class Meta:
-        model = UserProfile
-        fields = ["name", "email", "contact_number"]
-
-    # Form fields with custom validation
-    name = forms.CharField(
-        required=True,
-        widget=forms.TextInput(
-            attrs={"placeholder": "Enter your name", "required": "required"}
-        ),
+    first_name = forms.CharField(
+        max_length=30,
+        required=False,
+        validators=[
+            RegexValidator(
+                regex=r"^[A-Za-z\s]+$",
+                message="First name must contain only letters and spaces.",
+            )
+        ],
+    )
+    last_name = forms.CharField(
+        max_length=30,
+        required=False,
+        validators=[
+            RegexValidator(
+                regex=r"^[A-Za-z\s]+$",
+                message="Last name must contain only letters and spaces.",
+            )
+        ],
     )
     email = forms.EmailField(
+        max_length=200,
         required=True,
-        widget=forms.EmailInput(
-            attrs={"placeholder": "Enter your email", "required": "required"}
-        ),
+        validators=[EmailValidator(message="Enter a valid email address.")],
     )
     contact_number = forms.CharField(
+        max_length=15,
         required=True,
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "Enter your contact number",
-                "pattern": "^\+?[0-9\s-]{7,15}$",
-                "required": "required",
-            }
-        ),
+        validators=[
+            RegexValidator(
+                regex=r"^\+?[0-9\s-]{7,15}$",
+                message="Contact number must contain only numbers, spaces, or dashes.",
+            )
+        ],
     )
 
-    # Clean name field to ensure it only contains letters and spaces
-    def clean_name(self):
-        name = self.cleaned_data.get("name")  # Get name
-        if not name:
-            raise ValidationError("Name is required.")
-        if not re.match(r"^[A-Za-z\s]+$", name):
-            raise ValidationError("Name must contain only letters and spaces.")
-        return name
+    class Meta:
+        model = UserProfile
+        fields = ["first_name", "last_name", "email", "contact_number"]
 
-    # Clean email field to ensure it is a valid email address
+    def __init__(self, *args, **kwargs):
+        super(UserProfileForm, self).__init__(*args, **kwargs)
+        if self.instance and self.instance.user:
+            self.fields["first_name"].initial = self.instance.user.first_name
+            self.fields["last_name"].initial = self.instance.user.last_name
+
+    def clean_first_name(self):
+        first_name = self.cleaned_data.get("first_name")
+        if not first_name:
+            raise ValidationError("First name is required.")
+        return first_name
+
+    def clean_last_name(self):
+        last_name = self.cleaned_data.get("last_name")
+        if not last_name:
+            raise ValidationError("Last name is required.")
+        return last_name
+
     def clean_email(self):
-        email = self.cleaned_data.get("email")  # Get email
+        email = self.cleaned_data.get("email")
         if not email:
             raise ValidationError("Email is required.")
-        if not re.match(r"[^@]+@[^@]+\.[^@]+", email):  # Basic email regex
-            raise ValidationError("Enter a valid email address.")
         return email
 
-    # Clean contact number field to ensure it only contains numbers, spaces, or dashes
     def clean_contact_number(self):
-        contact_number = self.cleaned_data.get("contact_number")  # Get contact number
+        contact_number = self.cleaned_data.get("contact_number")
         if not contact_number:
             raise ValidationError("Contact number is required.")
-        if not re.match(
-            r"^\+?[0-9\s-]{7,15}$", contact_number
-        ):  # Allows +, numbers, spaces, dashes
-            raise ValidationError(
-                "Contact number must contain only numbers, spaces, or dashes, and be 7-15 characters long."
-            )
         return contact_number
 
 

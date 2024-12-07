@@ -31,6 +31,18 @@ class UserProfile(models.Model):
         return self.user.username
 
 
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.get_or_create(user=instance)
+
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    if hasattr(instance, "userprofile"):
+        instance.userprofile.save()
+
+
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookings")
     wine_experience = models.ForeignKey(
@@ -50,15 +62,3 @@ class Booking(models.Model):
             else:
                 raise ValueError("Not enough spots available for this experience.")
         super().save(*args, **kwargs)
-
-
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        UserProfile.objects.get_or_create(user=instance)
-
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    if hasattr(instance, "userprofile"):
-        instance.userprofile.save()
