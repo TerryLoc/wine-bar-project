@@ -1,19 +1,19 @@
 from django.contrib import admin
-from .models import wineCellar
+from .models import Booking, wineCellar, UserProfile
 
 
-@admin.register(wineCellar)
 class WineCellarAdmin(admin.ModelAdmin):
-    list_display = ("title", "price", "date", "available_spots")
-    search_fields = ("title", "description")
+    list_display = ("title", "date", "available_spots", "total_spots")
+    search_fields = ("title",)
     list_filter = ("date",)
-    fields = (
-        "title",
-        "description",
-        "price",
-        "date",
-        "available_spots",
-        "total_spots",
-        "what_to_expect",
-        "join_us_for",
-    )
+
+
+class BookingAdmin(admin.ModelAdmin):
+    list_display = ("user", "wine_experience", "spots_reserved", "timestamp")
+    search_fields = ("user__username", "wine_experience__title")
+    list_filter = ("wine_experience", "timestamp")
+
+
+admin.site.register(wineCellar, WineCellarAdmin)
+admin.site.register(Booking, BookingAdmin)
+admin.site.register(UserProfile)

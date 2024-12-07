@@ -41,27 +41,26 @@ document.addEventListener('DOMContentLoaded', function () {
     modal.find('#bookingForm').attr('action', actionUrl);
   });
 
-  // booking form submission via AJAX
-  $('#bookingForm').on('submit', function (event) {
-    event.preventDefault();
-    var form = $(this);
-    var actionUrl = form.attr('action');
-    $.ajax({
-      type: 'POST',
-      url: actionUrl,
-      data: form.serialize(),
-      success: function (response) {
-        if (response.success) {
-          $('#bookingModal').modal('hide');
-          $('#confirmationMessage').text(response.message);
-          $('#confirmationModal').modal('show');
-        } else {
-          alert(response.message);
-        }
-      },
-      error: function () {
-        alert('An error occurred. Please try again.');
-      },
-    });
+  // Show/hide password for registration form
+  const togglePassword1 = document.querySelector('#togglePassword1');
+  const password1 = document.querySelector('#id_password1');
+
+  togglePassword1.addEventListener('click', function (e) {
+    const type =
+      password1.getAttribute('type') === 'password' ? 'text' : 'password';
+    password1.setAttribute('type', type);
+    this.classList.toggle('fa-eye');
+    this.classList.toggle('fa-eye-slash');
+  });
+
+  const togglePassword2 = document.querySelector('#togglePassword2');
+  const password2 = document.querySelector('#id_password2');
+
+  togglePassword2.addEventListener('click', function (e) {
+    const type =
+      password2.getAttribute('type') === 'password' ? 'text' : 'password';
+    password2.setAttribute('type', type);
+    this.classList.toggle('fa-eye');
+    this.classList.toggle('fa-eye-slash');
   });
 });
