@@ -1,16 +1,16 @@
+#  Description: This file contains the form for user profile and booking.
+from .models import Booking
 from django import forms
 from .models import UserProfile
-from .models import Booking
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator, EmailValidator
-import re  # For regex validation
 
 
 #  Form for user profile
 class UserProfileForm(forms.ModelForm):
     first_name = forms.CharField(
         max_length=30,
-        required=False,
+        required=True,
         validators=[
             RegexValidator(
                 regex=r"^[A-Za-z\s]+$",
@@ -20,7 +20,7 @@ class UserProfileForm(forms.ModelForm):
     )
     last_name = forms.CharField(
         max_length=30,
-        required=False,
+        required=True,
         validators=[
             RegexValidator(
                 regex=r"^[A-Za-z\s]+$",
