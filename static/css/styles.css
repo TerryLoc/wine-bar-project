@@ -190,6 +190,19 @@ strong .flip-horizontal {
 }
 
 /* Profile */
+.profile-form {
+  background-color: var(--bg-color2);
+  padding: 50px;
+  border-radius: 10px;
+}
+
+.mt-2 {
+  justify-content: center;
+  margin-top: 1rem !important;
+  margin: 1rem auto;
+  display: flex;
+}
+
 .mb-4 .profile_title {
   margin: 50px auto;
   text-align: center;
@@ -251,6 +264,13 @@ strong .flip-horizontal {
   position: relative;
   margin-bottom: 1rem;
   padding-left: 2rem;
+}
+
+.errorlist {
+  color: var(--text-alert);
+  font-size: 1.2rem;
+  margin: 10px auto;
+  text-shadow: var(--all-tsh);
 }
 
 /* register */

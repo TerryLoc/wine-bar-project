@@ -3,7 +3,7 @@
 {% block content %}
   <div class="container mt-4">
     <h1 class="mb-4">Profile</h1>
-    <form method="post" action="{% url 'bookings:profile' %}">
+    <form class="profile-form" method="post" action="{% url 'bookings:profile' %}">
       {% csrf_token %}
       <div class="form-group">
         <label for="first_name">First Name</label>
@@ -41,10 +41,12 @@
           </div>
         {% endif %}
       </div>
-      <button type="submit" class="btn btn-primary">Update Profile</button>
+      <button type="submit" class="btn btn-warning">Update Profile</button>
     </form>
-
-    <hr>
+    <form method="post" action="{% url 'bookings:profile' %}" class="mt-2">
+      {% csrf_token %}
+      <button type="submit" name="delete_profile" class="btn btn-danger">Delete Profile</button>
+    </form>
 
     <h2 class="mt-4">My Bookings</h2>
     <div class="user_bookings">
@@ -78,10 +80,5 @@
     </div>
 
     <hr>
-
-    <form method="post" action="{% url 'bookings:profile' %}">
-      {% csrf_token %}
-      <button type="submit" name="delete_profile" class="btn btn-danger">Delete Profile</button>
-    </form>
   </div>
 {% endblock content %}
