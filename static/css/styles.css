@@ -389,15 +389,19 @@ strong .flip-horizontal {
 /* user bookings on profile page */
 .user_bookings {
   display: grid;
-  justify-items: flex-start;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
   margin: 50px auto;
   background-color: var(--bg-color);
   border-radius: 10px;
+  padding: 20px;
 }
 
 .user_bookings ul {
   list-style-type: none;
-  padding: 20px;
+  padding: 0;
+  margin: 0;
+  display: contents; /* Ensure ul does not interfere with grid layout */
 }
 
 .user_bookings ul li {
@@ -405,6 +409,13 @@ strong .flip-horizontal {
   padding: 10px;
   background-color: var(--bg-color2);
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-group-sm > .btn,
+.btn-sm {
+  margin-top: 15px;
 }
 
 @media screen and (max-width: 768px) {
