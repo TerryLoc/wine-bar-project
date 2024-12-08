@@ -94,7 +94,7 @@
             {% csrf_token %}
             <div class="form-group">
               <label for="numSpaces">Number of Spaces</label>
-              <input type="number" class="form-control" id="numSpaces" name="spots_reserved" min="1" required>
+              <input type="number" class="form-control" id="numSpaces" name="spots_reserved" min="1" value="1" required>
             </div>
             <input type="hidden" id="wineId" name="wine_id">
             <button type="submit" class="btn btn-primary">Confirm Booking</button>
