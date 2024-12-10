@@ -186,7 +186,7 @@ strong .flip-horizontal {
   justify-content: center;
   align-items: center;
   margin: 30px auto;
-  max-width: 40%;
+  max-width: 50%;
 }
 
 /* Profile */
@@ -283,8 +283,7 @@ strong .flip-horizontal {
 }
 
 .input-info {
-  margin: 10px auto;
-  width: 80%;
+  margin: 0 auto;
 }
 
 .form-group {
@@ -385,10 +384,6 @@ strong .flip-horizontal {
 }
 
 .login_section button {
-  margin-top: 20px;
-  width: 50%;
-  color: var(--bg-color2);
-  background-color: var(--gold-color);
   border: none;
   text-transform: uppercase;
 }
