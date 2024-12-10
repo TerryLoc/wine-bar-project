@@ -27,6 +27,11 @@ class UserProfile(models.Model):
     email = models.EmailField(max_length=200, blank=True)
     contact_number = models.CharField(max_length=15, blank=True)
 
+    def save(self, *args, **kwargs):
+        # Concatenate first and last name from the user profile
+        self.name = f"{self.user.first_name} {self.user.last_name}"
+        super(UserProfile, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.user.username
 
