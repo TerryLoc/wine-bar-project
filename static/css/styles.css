@@ -186,8 +186,14 @@ strong .flip-horizontal {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 30px auto;
-  max-width: 50%;
+  margin: 40px auto;
+  max-width: 70%;
+}
+
+.errorlist {
+  color: var(--text-alert);
+  font-size: 1.2rem;
+  margin: 0 !important;
 }
 
 /* Profile */
@@ -269,9 +275,7 @@ strong .flip-horizontal {
 
 .errorlist {
   color: var(--text-alert);
-  font-size: 1.2rem;
-  margin: 10px auto;
-  text-shadow: var(--all-tsh);
+  margin: 0 !important;
 }
 
 /* register */
@@ -289,9 +293,9 @@ strong .flip-horizontal {
 
 .form-group {
   display: flex;
-  align-items: flex-start;
   flex-direction: column;
   align-items: flex-start;
+  margin: 0 auto;
 }
 
 .form-group label {
