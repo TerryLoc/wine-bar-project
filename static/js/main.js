@@ -1,6 +1,6 @@
 // Hide the alert message after 3 seconds (3000ms) on the booking page
 setTimeout(function () {
-  var alertMessage = document.getElementById('alert-message');
+  const alertMessage = document.getElementById('alert-message');
   if (alertMessage) {
     alertMessage.style.display = 'none';
   }
@@ -37,20 +37,20 @@ function confirmSaveChanges() {
 // booking modal
 document.addEventListener('DOMContentLoaded', function () {
   $('#bookingModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget); // Button that triggered the modal
-    var wineId = button.data('wine-id'); // Extract info from data-* attributes
-    var modal = $(this);
+    const button = $(event.relatedTarget); // Button that triggered the modal
+    const wineId = button.data('wine-id'); // Extract info from data-* attributes
+    const modal = $(this);
     modal.find('#wineId').val(wineId);
-    var actionUrlTemplate = modal.find('#bookingForm').data('url-template');
-    var actionUrl = actionUrlTemplate.replace('0', wineId);
+    const actionUrlTemplate = modal.find('#bookingForm').data('url-template');
+    const actionUrl = actionUrlTemplate.replace('0', wineId);
     modal.find('#bookingForm').attr('action', actionUrl);
   });
 
   // Handle booking form submission
   $('#bookingForm').on('submit', function (event) {
     event.preventDefault();
-    var form = $(this);
-    var actionUrl = form.attr('action');
+    const form = $(this);
+    const actionUrl = form.attr('action');
     $.ajax({
       type: 'POST',
       url: actionUrl,
@@ -77,8 +77,8 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!confirmCancel(form)) {
         return;
       }
-      var formData = new FormData(form);
-      var actionUrl = form.getAttribute('action');
+      const formData = new FormData(form);
+      const actionUrl = form.getAttribute('action');
       fetch(actionUrl, {
         method: 'POST',
         body: formData,
