@@ -3,7 +3,7 @@
 :root {
   --text-color: rgb(243, 243, 243);
   --text-color2: rgb(187, 187, 187);
-  --text-color3: rgb(56, 56, 56);
+  --text-color3: rgb(152, 152, 152);
   --text-alert: rgb(211, 25, 44);
   --gold-color: #ffc107;
   --bg-color: rgba(71, 71, 71, 0.9);
@@ -14,7 +14,7 @@
 body {
   font-family: 'Della Respira', serif;
   letter-spacing: 1px;
-  background-image: url('/media/empty_glasses.jpg');
+  background-image: url('/static/media/empty_glasses.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -102,8 +102,9 @@ strong .flip-horizontal {
   transform: scale(-1, -1);
 }
 
-.muted-text {
-  color: var(--text-color);
+.text-secondary {
+  color: var(--text-color3) !important;
+  text-shadow: var(--all-tsh);
 }
 
 .mb-4 strong {
