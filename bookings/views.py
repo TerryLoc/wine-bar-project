@@ -5,6 +5,23 @@ from .models import wineCellar, Booking, UserProfile
 from .forms import BookingForm, UserProfileForm
 from django.contrib.auth.forms import UserCreationForm
 from django.http import JsonResponse
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import login as auth_login
+
+
+class CustomLoginView(LoginView):
+    template_name = "bookings/login.html"
+    form_class = AuthenticationForm
+
+    def form_valid(self, form):
+        user = form.get_user()
+        auth_login(self.request, user)
+        messages.success(
+            self.request,
+            f"Welcome, {user.username}. It is lovely to see you! Please enjoy your wine adventure.",
+        )
+        return redirect("bookings:profile")
 
 
 def wine_list(request):

@@ -1,8 +1,10 @@
+<!-- filepath: /workspace/wine-bar-project/bookings/templates/bookings/register.html -->
 {% extends "layout.html" %}
 {% block content %}
     <div class="login_section">
         <h2>Register</h2>
         <a href="{% url 'bookings:login' %}" class="btn btn-secondary">Already a member</a>
+        
         <form class="register-form" method="post">
             {% csrf_token %}
             {{ form.non_field_errors }}
@@ -40,4 +42,13 @@
             </div>
         </form>
     </div>
+
+    <!-- To display messages -->
+    {% comment %} {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %} {% endcomment %}
 {% endblock content %}

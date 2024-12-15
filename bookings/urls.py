@@ -9,7 +9,9 @@ urlpatterns = [
     path("book/<int:wine_id>/", views.book_wine, name="book"),
     path("register/", views.register, name="register"),
     path(
-        "login/", LoginView.as_view(template_name="bookings/login.html"), name="login"
+        "login/",
+        views.CustomLoginView.as_view(template_name="bookings/login.html"),
+        name="login",
     ),
     path("profile/", views.profile, name="profile"),
     path("cancel_booking/", views.cancel_booking, name="cancel_booking"),
