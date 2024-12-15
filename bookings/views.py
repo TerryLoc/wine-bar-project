@@ -15,8 +15,31 @@ def wine_list(request):
     return render(request, "bookings/wine_cellar.html", {"wines": wines})
 
 
+def register(request):
+    """
+    Register a new user.
+    """
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                f"Registration successful! Welcome aboard {user.username}. Please log in to start your wine adventure.",
+            )
+
+            return redirect("bookings:login")
+    else:
+        form = UserCreationForm()
+    return render(request, "bookings/register.html", {"form": form})
+
+
 @login_required
 def book_wine(request, wine_id):
+    """
+    Book a wine experience.
+    """
     wine = get_object_or_404(wineCellar, id=wine_id)
     if request.method == "POST":
         form = BookingForm(request.POST)
@@ -43,18 +66,6 @@ def book_wine(request, wine_id):
     else:
         form = BookingForm()
     return render(request, "bookings/booking_form.html", {"form": form, "wine": wine})
-
-
-def register(request):
-    if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            messages.success(request, f"Account created for {user.username}.")
-            return redirect("bookings:login")
-    else:
-        form = UserCreationForm()
-    return render(request, "bookings/register.html", {"form": form})
 
 
 @login_required
@@ -88,6 +99,9 @@ def profile(request):
 
 @login_required
 def cancel_booking(request):
+    """
+    Cancel a booking.
+    """
     if request.method == "POST":
         try:
             wine_id = int(request.POST.get("wine_id"))
