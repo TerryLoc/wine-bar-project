@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
   <div class="container mt-4">
-    <h1 class="mb-4">Profile</h1>
+    <h1 class="mb-4"><strong>Profile</strong></h1>
+    <a href="{% url 'bookings:wine_cellar' %}"
+       class="btn btn-warning btn-md">Explore the Wine Cellar</a>
     <!-- Profile content -->
     <form method="post" action="{% url 'bookings:profile' %}">
       {% csrf_token %}
