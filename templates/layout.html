@@ -13,15 +13,24 @@
           content="Discover exquisite wine tasting experiences at The Wine Bar." />
     <meta name="keywords" content="wine, wine bar, tasting, experiences" />
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon_io/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon_io/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon_io/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon"
+          sizes="180x180"
+          href="{% static 'favicon_io/apple-touch-icon.png' %}">
+    <link rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="{% static 'favicon_io/favicon-32x32.png' %}">
+    <link rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="{% static 'favicon_io/favicon-16x16.png' %}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <script src="https://kit.fontawesome.com/712db90352.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/712db90352.js"
+            crossorigin="anonymous"></script>
   </head>
   <body>
     <!-- Navigation -->
@@ -49,10 +58,10 @@
               <a class="nav-link" href="{% url 'bookings:profile' %}">Profile</a>
             </li>
             <li class="nav-item">
-              <form method="post" action="{% url 'logout' %}">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-link nav-link">Logout</button>
-              </form>
+              <a class="btn btn-link nav-link"
+                 href="#"
+                 data-toggle="modal"
+                 data-target="#logoutConfirmationModal">Logout</a>
             </li>
           {% else %}
             <li class="nav-item">
@@ -70,15 +79,41 @@
       <!-- To display messages -->
       {% if messages %}
         <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
+          {% for message in messages %}
+            <li {% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
         </ul>
-    {% endif %}
+      {% endif %}
       {% block content %}
         <!-- Content goes here -->
       {% endblock content %}
     </main>
+    <!-- Logout Confirmation Modal -->
+    <div class="modal fade"
+         id="logoutConfirmationModal"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="logoutConfirmationModalLabel"
+         aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="logoutConfirmationModalLabel">Confirm Logout</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">X</span>
+            </button>
+          </div>
+          <div class="modal-body">Are you sure you want to logout?</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <form method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-primary">Logout</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

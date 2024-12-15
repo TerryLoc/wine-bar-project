@@ -19,7 +19,7 @@ class CustomLoginView(LoginView):
         auth_login(self.request, user)
         messages.success(
             self.request,
-            f"Welcome, {user.username}. It is lovely to see you! Please enjoy your wine adventure.",
+            f"Welcome, {user.username} you have successfully logged in! Please enjoy your wine adventure.",
         )
         return redirect("bookings:profile")
 
