@@ -29,11 +29,12 @@ class UserProfileForm(forms.ModelForm):
         ],
     )
     email = forms.EmailField(
-        max_length=200,
+        max_length=100,
         required=True,
         validators=[EmailValidator(message="Enter a valid email address.")],
     )
     contact_number = forms.CharField(
+        min_length=7,
         max_length=15,
         required=True,
         validators=[
