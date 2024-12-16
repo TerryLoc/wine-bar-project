@@ -2,11 +2,15 @@
 {% block content %}
   <div class="container mt-4">
     <h1 class="mb-4"><strong>Profile</strong></h1>
+
+    <!-- Button to explore the wine cellar -->
     <a href="{% url 'bookings:wine_cellar' %}"
        class="btn btn-warning btn-md">Explore the Wine Cellar</a>
+
     <!-- Profile content -->
     <form method="post" action="{% url 'bookings:profile' %}">
       {% csrf_token %}
+      <!-- First Name field -->
       <div class="form-group">
         <label for="first_name">First Name</label>
         <input type="text"
@@ -16,8 +20,11 @@
                value="{{ form.first_name.value }}"
                autocomplete="given-name"
                placeholder="Joe">
+        <!-- Display errors for first name field -->
         {% if form.first_name.errors %}<div class="text-danger">{{ form.first_name.errors }}</div>{% endif %}
       </div>
+
+      <!-- Last Name field -->
       <div class="form-group">
         <label for="last_name">Last Name</label>
         <input type="text"
@@ -27,8 +34,11 @@
                value="{{ form.last_name.value }}"
                autocomplete="family-name"
                placeholder="Blogs">
+        <!-- Display errors for last name field -->
         {% if form.last_name.errors %}<div class="text-danger">{{ form.last_name.errors }}</div>{% endif %}
       </div>
+
+      <!-- Email field -->
       <div class="form-group">
         <label for="email">Email</label>
         <input type="email"
@@ -38,8 +48,11 @@
                value="{{ form.email.value }}"
                autocomplete="email"
                placeholder="joeblogs@email.co">
+        <!-- Display errors for email field -->
         {% if form.email.errors %}<div class="text-danger">{{ form.email.errors }}</div>{% endif %}
       </div>
+
+      <!-- Contact Number field -->
       <div class="form-group">
         <label for="contact_number">Contact Number</label>
         <input type="text"
@@ -49,14 +62,20 @@
                value="{{ form.contact_number.value }}"
                autocomplete="tel"
                placeholder="087XXX XXXX">
+        <!-- Display errors for contact number field -->
         {% if form.contact_number.errors %}<div class="text-danger">{{ form.contact_number.errors }}</div>{% endif %}
       </div>
+
+      <!-- Update Profile button -->
       <button type="submit" class="btn btn-warning">Update Profile</button>
     </form>
+
+    <!-- Delete Profile button -->
     <button type="button"
             class="btn btn-danger mt-2"
             data-toggle="modal"
             data-target="#deleteProfileModal">Delete Profile</button>
+    
     <!-- Delete Profile Confirmation Modal -->
     <div class="modal fade"
          id="deleteProfileModal"
@@ -75,15 +94,18 @@
           <div class="modal-body">Are you sure you want to delete your profile? This action cannot be undone.</div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <!-- Confirm delete button -->
             <form method="post" action="{% url 'bookings:profile' %}">
               {% csrf_token %}
-              <button type="submit" name="delete_profile" class="btn btn-danger">Delete Profile</button>
+              <button type="submit" name="delete_profile" class="btn btn-danger">Confirm Delete</button>
             </form>
           </div>
         </div>
       </div>
     </div>
     <hr>
+
+    <!-- My Bookings -->
     <h2 class="mt-4">My Bookings</h2>
     <div class="user_bookings">
       <ul>
@@ -97,6 +119,7 @@
                   action="{% url 'bookings:cancel_booking' %}">
               {% csrf_token %}
               <input type="hidden" name="wine_id" value="{{ booking.wine_experience.id }}">
+              
               <!-- Cancel specific number of spots -->
               <div class="form-group">
                 <label for="spots_to_cancel_{{ booking.id }}">Cancel Spots:</label>
@@ -108,10 +131,13 @@
                        min="1"
                        value="0"
                        max="{{ booking.spots_reserved }}">
+                <!-- Cancel button -->
                 <button type="submit" name="cancel_booking" class="btn btn-danger btn-sm">Cancel Selected</button>
               </div>
             </form>
           </li>
+
+        <!-- Display message if user has no bookings -->
         {% empty %}
           <p>You haven't made any bookings yet.</p>
         {% endfor %}
