@@ -60,7 +60,7 @@ def save_user_profile(sender, instance, **kwargs):
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookings")
     wine_experience = models.ForeignKey(
-        wineCellar, on_delete=models.CASCADE, related_name="bookings"
+        WineCellar, on_delete=models.CASCADE, related_name="bookings"
     )
     spots_reserved = models.PositiveIntegerField(default=1)
     timestamp = models.DateTimeField(auto_now_add=True)

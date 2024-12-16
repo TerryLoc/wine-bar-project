@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import wineCellar, Booking, UserProfile
+from .models import WineCellar, Booking, UserProfile
 from .forms import BookingForm, UserProfileForm
 from django.contrib.auth.forms import UserCreationForm
 from django.http import JsonResponse
@@ -28,7 +28,7 @@ def wine_list(request):
     """
     Display the list of available wine experiences.
     """
-    wines = wineCellar.objects.all()
+    wines = WineCellar.objects.all()
     return render(request, "bookings/wine_cellar.html", {"wines": wines})
 
 
@@ -57,7 +57,7 @@ def book_wine(request, wine_id):
     """
     Book a wine experience.
     """
-    wine = get_object_or_404(wineCellar, id=wine_id)
+    wine = get_object_or_404(WineCellar, id=wine_id)
     if request.method == "POST":
         form = BookingForm(request.POST)
         if form.is_valid():
@@ -126,7 +126,7 @@ def cancel_booking(request):
         except (ValueError, TypeError):
             return JsonResponse({"success": False, "message": "Invalid booking data."})
 
-        wine = get_object_or_404(wineCellar, id=wine_id)
+        wine = get_object_or_404(WineCellar, id=wine_id)
         booking = Booking.objects.filter(
             user=request.user, wine_experience=wine
         ).first()

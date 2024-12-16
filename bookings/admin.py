@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Booking, wineCellar, UserProfile
+from .models import Booking, WineCellar, UserProfile
 
 
 class WineCellarAdmin(admin.ModelAdmin):
@@ -14,6 +14,6 @@ class BookingAdmin(admin.ModelAdmin):
     list_filter = ("wine_experience", "timestamp")
 
 
-admin.site.register(wineCellar, WineCellarAdmin)
+admin.site.register(WineCellar, WineCellarAdmin)
 admin.site.register(Booking, BookingAdmin)
 admin.site.register(UserProfile)
