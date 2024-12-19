@@ -451,6 +451,16 @@ strong .flip-horizontal {
 }
 
 @media screen and (max-width: 768px) {
+  .navbar-light .navbar-brand {
+    font-size: 1.3rem;
+  }
+
+  .nav-item {
+    font-size: 1rem;
+    display: flex;
+    margin-left: 20px;
+  }
+
   #info {
     display: flex;
     flex-direction: column;
@@ -461,7 +471,38 @@ strong .flip-horizontal {
     height: 100%;
   }
 
+  .card-title {
+    font-size: 1.5rem;
+  }
+
+  .card-text {
+    font-size: 1rem;
+  }
+
+  .about_tasting h6 {
+    font-size: 0.8rem;
+  }
+
   .btn-warning {
     max-width: 60%;
+  }
+
+  .mb-4 strong {
+    font-size: 2.5rem;
+  }
+
+  .btn-group-lg > .btn,
+  .btn-lg {
+    font-size: 1rem;
+  }
+
+  /* Profile */
+
+  .user_bookings {
+    padding: 10px;
+  }
+
+  .user_bookings ul li {
+    max-width: 220px;
   }
 }
