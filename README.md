@@ -6,6 +6,7 @@ Live link: [Booking App site](https://the-wine-bar-5c52e3b945e9.herokuapp.com/)
 
 <p>Welcome to the <strong>Wine Bar booking system</strong> a place where technology and tradition come together to create unforgettable wine-tasting moments. Imagine yourself in a cozy restaurant, surrounded by walls that come alive with projections of picturesque vineyards and stunning landscapes from around the world. This application is your gateway to curated wine adventures, right from your screen to the perfect evening under the stars.</p>
 
+
 ## Table of Contents
 
 <ul> 
@@ -19,7 +20,34 @@ Live link: [Booking App site](https://the-wine-bar-5c52e3b945e9.herokuapp.com/)
 
 ## About the Project
 
+### Purpose
+
 <p>This is a Django-powered web application that manages the backend operations for booking and managing wine-tasting events. It handles user authentication, event scheduling, and booking management. The backend ensures seamless data flow between the database and the user interface, providing a robust platform for wine enthusiasts to explore and book immersive tasting experiences.</p>
+
+
+### Target Audience
+
+The primary target audiences include:
+- **Wine Enthusiasts**: Individuals who have a passion for wine and are looking for new and exciting tasting experiences.
+- **Event Organisers**: Businesses and individuals who organise wine-tasting events and need a platform to manage bookings and user interactions.
+- **Restaurant Owners**: Establishments that host wine-tasting events and want to offer their customers a unique and memorable experience.
+
+### Data
+
+We manage different types of data to ensure a smooth and personalised experience:
+- **User Data**: Information related to user registration, login, and profile management. This includes usernames, passwords, email addresses, and profile details.
+- **Event Data**: Details about the wine-tasting events, such as event titles, descriptions, dates, times, and available spots.
+- **Booking Data**: Information about user bookings, including the number of spots reserved, booking dates, and associated wine-tasting events.
+
+### Security Features
+
+Security is a critical part of the project. Several measures have been implemented for the safety and privacy of user data:
+- **User Authentication**: The application uses Django's built-in authentication system to manage user registration and login securely.
+- **Data Encryption**: Sensitive data, such as passwords, are encrypted using industry-standard hashing algorithms.
+- **CSRF Protection**: Cross-Site Request Forgery (CSRF) protection is enabled to prevent unauthorized actions on behalf of authenticated users.
+- **SSL/TLS**: Secure Sockets Layer (SSL) and Transport Layer Security (TLS) are used to encrypt data transmitted between the client and server, ensuring secure communication.
+- **Session Management**: Secure session cookies are used to manage user sessions, with settings to prevent session hijacking and fixation.
+- **Access Control**: Role-based access control is implemented to restrict access to certain parts of the application based on user roles (e.g., admin, user).
 <br>
 
 Return to [Table of Contents](#table-of-contents)
