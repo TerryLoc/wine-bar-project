@@ -26,7 +26,11 @@ Return to [Table of Contents](#table-of-contents)
 
 ## User Stories
 
-<p>Here’s what we’ve built for you:</p>
+<h3>Here’s what I’ve set to built:</h3>
+
+<p>You will find more information regarding stories on my projects in my Github. I used AGILE to keep track of the build process. This aloud me to understand what was achievable and what was a goal to far (This time 😉).</p>
+
+Project link: [AGILE for wine Bar](https://github.com/users/TerryLoc/projects/3)
 
 ### Users
 
@@ -53,33 +57,42 @@ Return to [Table of Contents](#table-of-contents)
 
 ## Features
 
-<ul>
-  <li>
-    <strong>Personalized User Registration, Login, and Profile Management:</strong>
-    Users can register, log in, and manage their profiles. This functionality is handled by Django's built-in authentication system, with custom views and forms.
-  </li>
-  <br>
-  <li>
-    <strong>Curated Selection of Wine-Tasting Events:</strong>
-    The application offers a variety of wine-tasting events from regions like Italy, Argentina, and Chile. These events are managed through models, views, and templates for displaying event details.
-  </li>
-  <br>
-  <li>
-    <strong>Real-Time Booking System:</strong>
-    Users can book wine-tasting events with real-time updates on availability. The booking system is implemented in the `bookings` app, which handles the creation, modification, and cancellation of bookings. The availability of events is dynamically updated using Django signals.
-  </li>
-  <br>
-  <li>
-    <strong>Responsive and Dynamic Design:</strong>
-    The site uses JavaScript, CSS, and Bootstrap to ensure a dynamic and responsive design across all devices. This ensures that users have a seamless experience whether they are accessing the site from a desktop, tablet, or mobile device.
-</li>
-  <br>
-  <li>
-    <strong>Comprehensive Admin Panel:</strong>
-    Admin users have access to a robust admin panel for managing events and user data. This is facilitated by Django's admin interface, with customizations in the `admin.py` files of the `accounts`, `events`, and `bookings` apps to provide a seamless management experience.
-  </li>
-</ul>
-<br>
+### Personalized User Registration, Login, and Profile Management
+
+| Function               | Description                                                                                                  | Image                                                                                                      |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
+| **User Registration**  | New users can register an account. This functionality is handled by Django's built-in authentication system. | <img src="static/media/readme/register_model.png" alt="User Registration" width="400px" margin=" 0 auto"/> |
+| **User Login**         | Users can log in with their credentials. Custom views and forms are used for this functionality.             | <img src="static/media/readme/login_model.png" alt="User Login" width="400px" margin=" 0 auto"/>           |
+| **Profile Management** | Users can manage their profiles, update information, and view their booking history.                         | <img src="static/media/readme/profile_page.png" alt="Profile management" width="400px" margin=" 0 auto"/>  |
+
+### Curated Selection of Wine-Tasting Events
+
+| Function          | Description                                                                                         | Image                           |
+| ----------------- | --------------------------------------------------------------------------------------------------- | ------------------------------- |
+| **Event Listing** | Displays a list of available wine-tasting events from regions like Italy, Argentina, and Chile.     | ![Event Listing](path/to/image) |
+| **Event Details** | Provides detailed information about each wine-tasting event, including date, time, and description. | ![Event Details](path/to/image) |
+
+### Real-Time Booking System
+
+| Function                 | Description                                                                | Image                                  |
+| ------------------------ | -------------------------------------------------------------------------- | -------------------------------------- |
+| **Booking Creation**     | Users can book wine-tasting events with real-time updates on availability. | ![Booking Creation](path/to/image)     |
+| **Booking Modification** | Users can modify their existing bookings.                                  | ![Booking Modification](path/to/image) |
+| **Booking Cancellation** | Users can cancel their bookings and receive a confirmation message.        | ![Booking Cancellation](path/to/image) |
+
+### Responsive and Dynamic Design
+
+| Function                 | Description                                                                 | Image                                  |
+| ------------------------ | --------------------------------------------------------------------------- | -------------------------------------- |
+| **Responsive Layout**    | The site uses Bootstrap to ensure a responsive design across all devices.   | ![Responsive Layout](path/to/image)    |
+| **Dynamic Interactions** | JavaScript is used to add dynamic interactions and enhance user experience. | ![Dynamic Interactions](path/to/image) |
+
+### Comprehensive Admin Panel
+
+| Function             | Description                                                                 | Image                              |
+| -------------------- | --------------------------------------------------------------------------- | ---------------------------------- |
+| **Event Management** | Admin users can create, update, and delete wine-tasting events.             | ![Event Management](path/to/image) |
+| **User Management**  | Admin users can manage user data and view all bookings for specific events. | ![User Management](path/to/image)  |
 
 Return to [Table of Contents](#table-of-contents)
 
