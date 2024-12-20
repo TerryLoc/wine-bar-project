@@ -195,9 +195,66 @@ Return to [Table of Contents](#table-of-contents)
 - **Django**: The primary web framework used for building the backend of the application. It handles user authentication, event scheduling, and booking management.
   
 - **Gunicorn**: A production-ready web server for running the Django application on Heroku.
+  
 - **Heroku**: The platform used for deploying the application.
   
 - **SQLite**: The database used for development. It stores user data, event details, and booking information.
+
+- **Whitenoise**: A Python package that helps serve static files in a Django application.
+
+<hr>
+
+### What is WhiteNoise
+
+WhiteNoise is a Python package that helps serve static files in a Django application. It is particularly useful in production environments where you need a reliable and efficient way to serve static assets like CSS, JavaScript, and images.
+
+#### Key Benefits of WhiteNoise:
+
+1. **Simplifies Static File Handling**: WhiteNoise allows your Django application to serve its own static files, eliminating the need for a separate web server or CDN for static assets.
+   
+2. **Efficient Caching**: It provides efficient caching mechanisms, including support for cache headers and compression, which can improve the performance of your site.
+   
+3. **Easy Integration**: WhiteNoise integrates seamlessly with Django, requiring minimal configuration changes.
+   
+4. **Security**: It helps ensure that static files are served securely, with appropriate headers to prevent issues like MIME type sniffing.
+
+### To use WhiteNoise:
+
+1. **Install WhiteNoise**:
+    ```sh
+    pip install whitenoise
+    ```
+
+2. **Add WhiteNoise to Middleware**:
+    Add `WhiteNoiseMiddleware` to the `MIDDLEWARE` list in your `settings.py` file, preferably right after `SecurityMiddleware`:
+    ```python
+    MIDDLEWARE = [
+        "django.middleware.security.SecurityMiddleware",
+        "whitenoise.middleware.WhiteNoiseMiddleware",
+        "django.contrib.sessions.middleware.SessionMiddleware",
+        "django.middleware.common.CommonMiddleware",
+        "django.middleware.csrf.CsrfViewMiddleware",
+        "django.contrib.auth.middleware.AuthenticationMiddleware",
+        "django.contrib.messages.middleware.MessageMiddleware",
+        "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    ]
+    ```
+
+3. **Configure Static Files Storage**:
+    Set the `STATICFILES_STORAGE` to use WhiteNoise's storage backend:
+    ```python
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    ```
+
+4. **Collect Static Files**:
+    Run the `collectstatic` command to gather all static files into the `STATIC_ROOT` directory:
+    ```sh
+    python manage.py collectstatic
+    ```
+
+By following these steps, WhiteNoise will handle serving your static files efficiently and securely in a production environment.
+
+<hr>
   
 - **HTML/CSS**: Used for structuring and styling the frontend of the application.
   
@@ -210,3 +267,6 @@ Return to [Table of Contents](#table-of-contents)
 - **Git**: Version control system used for tracking changes and collaborating on the project.
   
 - **GitHub**: The platform used for hosting the project's repository and integrating with Heroku for deployment.
+<br>
+
+Return to [Table of Contents](#table-of-contents)
