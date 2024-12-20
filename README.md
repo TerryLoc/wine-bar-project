@@ -69,9 +69,9 @@ Return to [Table of Contents](#table-of-contents)
   </li>
   <br>
   <li>
-    <strong>Immersive Restaurant Projections:</strong>
-    The venue features projections of picturesque vineyards, enhancing the wine-tasting experience. This feature is integrated with the frontend using JavaScript and CSS to create dynamic and immersive visuals.
-  </li>
+    <strong>Responsive and Dynamic Design:</strong>
+    The site uses JavaScript, CSS, and Bootstrap to ensure a dynamic and responsive design across all devices. This ensures that users have a seamless experience whether they are accessing the site from a desktop, tablet, or mobile device.
+</li>
   <br>
   <li>
     <strong>Comprehensive Admin Panel:</strong>
