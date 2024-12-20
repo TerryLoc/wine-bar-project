@@ -211,12 +211,22 @@ Return to [Table of Contents](#table-of-contents)
 - **Gunicorn**: A production-ready web server for running the Django application on Heroku.
   
 - **Heroku**: The platform used for deploying the application.
-  
+
+<hr>
+
 - **SQLite**: The database used for development. It stores user data, event details, and booking information.
+
+### Data Structure
+
+| Description                              | Image                                                                                                                |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Detailed UML Diagram of WineCellar Model | <img src="static/media/readme/WineCellarUML.png" alt="WineCellar UML" width="400px" margin="0 auto"/>                |
+| Detailed Views Diagram                   | <img src="static/media/readme/DetailedViewsDiagram.png" alt="Detailed Views Diagram" width="400px" margin="0 auto"/> |
+
+<hr>
 
 - **Whitenoise**: A Python package that helps serve static files in a Django application.
 
-<hr>
 
 ### What is WhiteNoise
 
@@ -338,7 +348,9 @@ To ensure that the Wine Bar Experience application is working correctly, follow 
 | ----------------------------------------------------------------- | ----- | ---- | ----- |
 | TOTAL                                                             | 281   | 133  | 53%   |
 
-### Test Cases
+### Additional Testing
+
+#### Manual Testing: 
 
 | Test Case            | Status   | Description                                                                              |
 | -------------------- | -------- | ---------------------------------------------------------------------------------------- |
@@ -351,9 +363,6 @@ To ensure that the Wine Bar Experience application is working correctly, follow 
 | Static Files Serving | ✅ Passed | Verify that static files (CSS, JS, images) are served correctly in production.           |
 | Responsive Design    | ✅ Passed | Check that the site is responsive and works well on desktop, tablet, and mobile devices. |
 
-### Additional Testing
-
-- **Manual Testing**: 
   
 - **Browser Compatibility**:
 
