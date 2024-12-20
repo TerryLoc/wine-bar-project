@@ -44,8 +44,8 @@ We manage different types of data to ensure a smooth and personalised experience
 Security is a critical part of the project. Several measures have been implemented for the safety and privacy of user data:
 - **User Authentication**: The application uses Django's built-in authentication system to manage user registration and login securely.
 - **Data Encryption**: Sensitive data, such as passwords, are encrypted using industry-standard hashing algorithms.
-- **CSRF Protection**: Cross-Site Request Forgery (CSRF) protection is enabled to prevent unauthorized actions on behalf of authenticated users.
-- **SSL/TLS**: Secure Sockets Layer (SSL) and Transport Layer Security (TLS) are used to encrypt data transmitted between the client and server, ensuring secure communication.
+- **CSRF Protection**: (CSRF) is enabled to prevent unauthorized actions on behalf of authenticated users.
+- **SSL/TLS**: Secure Sockets Layer and Transport Layer Security are used to encrypt data transmitted between the client and server, ensuring secure communication.
 - **Session Management**: Secure session cookies are used to manage user sessions, with settings to prevent session hijacking and fixation.
 - **Access Control**: Role-based access control is implemented to restrict access to certain parts of the application based on user roles (e.g., admin, user).
 <br>
