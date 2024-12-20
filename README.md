@@ -1,8 +1,8 @@
-# Wine Bar Experience
+# 🍷 Wine Bar Experience 🍷
+
+Live link: [Booking App site](https://the-wine-bar-5c52e3b945e9.herokuapp.com/)
 
 <img src="static/media/readme/home_page.png" alt="home page" width="500px" margin=" 0 auto"/>
-
-Live link: [Live Booking App](https://island-survival-game-677f52a3b93d.herokuapp.com/)
 
 <p>Welcome to the <strong>Wine Bar booking system</strong> a place where technology and tradition come together to create unforgettable wine-tasting moments. Imagine yourself in a cozy restaurant, surrounded by walls that come alive with projections of picturesque vineyards and stunning landscapes from around the world. This application is your gateway to curated wine adventures, right from your screen to the perfect evening under the stars.</p>
 
@@ -14,12 +14,13 @@ Live link: [Live Booking App](https://island-survival-game-677f52a3b93d.herokuap
 <li><a href="#setup-and-installation">Setup & Installation</a></li> 
 <li><a href="#usage">Usage</a></li> 
 <li><a href="#technologies-used">Technologies Used</a></li> 
-<li><a href="#contributing">Contributing</a></li> 
-<li><a href="#license">License</a></li> </ul>
+
 
 ## About the Project
 
 <p>This is a Django-powered web application that manages the backend operations for booking and managing wine-tasting events. It handles user authentication, event scheduling, and booking management. The backend ensures seamless data flow between the database and the user interface, providing a robust platform for wine enthusiasts to explore and book immersive tasting experiences.</p>
+
+Return to [Table of Contents](#table-of-contents)
 
 ## User Stories
 
@@ -44,6 +45,8 @@ Live link: [Live Booking App](https://island-survival-game-677f52a3b93d.herokuap
 <li><strong>As an Admin:</strong> I want to update event details like availability and pricing as needed.</li> 
 <li><strong>As an Admin:</strong> I want to remove outdated or canceled events to maintain an up-to-date catalog.</li> <li><strong>As an Admin:</strong> I want to view all bookings for specific events to manage attendance effectively.</li> 
 </ul>
+
+Return to [Table of Contents](#table-of-contents)
 
 ## Features
 
@@ -74,3 +77,4 @@ Live link: [Live Booking App](https://island-survival-game-677f52a3b93d.herokuap
   </li>
 </ul>
 
+Return to [Table of Contents](#table-of-contents)
