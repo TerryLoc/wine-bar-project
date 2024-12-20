@@ -1,5 +1,9 @@
 # Wine Bar Experience
 
+<img src="static/media/readme/home_page.png" alt="home page" width="500px" margin=" 0 auto"/>
+
+Live link: [Live Booking App](https://island-survival-game-677f52a3b93d.herokuapp.com/)
+
 <p>Welcome to the <strong>Wine Bar booking system</strong> a place where technology and tradition come together to create unforgettable wine-tasting moments. Imagine yourself in a cozy restaurant, surrounded by walls that come alive with projections of picturesque vineyards and stunning landscapes from around the world. This application is your gateway to curated wine adventures, right from your screen to the perfect evening under the stars.</p>
 
 ## Table of Contents
