@@ -3,7 +3,7 @@
 :root {
   --text-color: rgb(243, 243, 243);
   --text-color2: rgb(187, 187, 187);
-  --text-color3: rgb(117, 117, 117);
+  --text-color3: rgb(152, 152, 152);
   --text-alert: rgb(211, 25, 44);
   --gold-color: #ffc107;
   --bg-color: rgba(71, 71, 71, 0.9);
@@ -36,6 +36,17 @@ body::after {
 body * {
   position: relative;
   z-index: 2;
+}
+
+/* register and login in message */
+.messages {
+  background-color: var(--bg-color2);
+  color: var(--gold-color);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1.25rem;
+  list-style-type: none;
+  letter-spacing: 2px;
 }
 
 .bg-light {
@@ -100,6 +111,11 @@ p.fs-5 {
 
 strong .flip-horizontal {
   transform: scale(-1, -1);
+}
+
+.text-secondary {
+  color: var(--text-color3) !important;
+  text-shadow: var(--all-tsh);
 }
 
 .mb-4 strong {
@@ -181,8 +197,14 @@ strong .flip-horizontal {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 30px auto;
-  max-width: 50%;
+  margin: 40px auto;
+  max-width: 70%;
+}
+
+.errorlist {
+  color: var(--text-alert);
+  font-size: 1.2rem;
+  margin: 0 !important;
 }
 
 /* Profile */
@@ -264,9 +286,7 @@ strong .flip-horizontal {
 
 .errorlist {
   color: var(--text-alert);
-  font-size: 1.2rem;
-  margin: 10px auto;
-  text-shadow: var(--all-tsh);
+  margin: 0 !important;
 }
 
 /* register */
@@ -284,9 +304,9 @@ strong .flip-horizontal {
 
 .form-group {
   display: flex;
-  align-items: flex-start;
   flex-direction: column;
   align-items: flex-start;
+  margin: 0 auto;
 }
 
 .form-group label {
@@ -431,6 +451,16 @@ strong .flip-horizontal {
 }
 
 @media screen and (max-width: 768px) {
+  .navbar-light .navbar-brand {
+    font-size: 1.3rem;
+  }
+
+  .nav-item {
+    font-size: 1rem;
+    display: flex;
+    margin-left: 20px;
+  }
+
   #info {
     display: flex;
     flex-direction: column;
@@ -441,7 +471,39 @@ strong .flip-horizontal {
     height: 100%;
   }
 
+  .card-title {
+    margin-top: 10px;
+    font-size: 1.5rem;
+  }
+
+  .card-text {
+    font-size: 1rem;
+  }
+
+  .about_tasting h6 {
+    font-size: 0.8rem;
+  }
+
   .btn-warning {
     max-width: 60%;
+  }
+
+  .mb-4 strong {
+    font-size: 2.5rem;
+  }
+
+  .btn-group-lg > .btn,
+  .btn-lg {
+    font-size: 1rem;
+  }
+
+  /* Profile */
+
+  .user_bookings {
+    padding: 10px;
+  }
+
+  .user_bookings ul li {
+    max-width: 220px;
   }
 }

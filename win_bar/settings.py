@@ -118,3 +118,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGOUT_REDIRECT_URL = "winery"  # This will redirect to the home page after logging out
 LOGIN_REDIRECT_URL = "bookings:profile"  # direct to profile page
+
+# Additional settings for production
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+X_FRAME_OPTIONS = "DENY"
