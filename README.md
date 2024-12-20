@@ -13,7 +13,8 @@ Live link: [Booking App site](https://the-wine-bar-5c52e3b945e9.herokuapp.com/)
 <li><a href="#features">Features</a></li> 
 <li><a href="#setup-and-installation">Setup and Installation</a></li>
 <li><a href="#deployment">Deployment</a></li> 
-<li><a href="#technologies-used">Technologies Used</a></li> 
+<li><a href="#technologies-used">Technologies Used</a></li>
+<li><a href="#testing">Testing</a></li>
 
 
 ## About the Project
@@ -240,19 +241,13 @@ WhiteNoise is a Python package that helps serve static files in a Django applica
     ]
     ```
 
-3. **Configure Static Files Storage**:
-    Set the `STATICFILES_STORAGE` to use WhiteNoise's storage backend:
-    ```python
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-    ```
-
-4. **Collect Static Files**:
+3. **Collect Static Files**:
     Run the `collectstatic` command to gather all static files into the `STATIC_ROOT` directory:
     ```sh
     python manage.py collectstatic
     ```
 
-By following these steps, WhiteNoise will handle serving your static files efficiently and securely in a production environment.
+By following these steps, WhiteNoise will handle your static files efficiently and securely.
 
 <hr>
   
@@ -270,3 +265,83 @@ By following these steps, WhiteNoise will handle serving your static files effic
 <br>
 
 Return to [Table of Contents](#table-of-contents)
+
+## Testing
+
+To ensure that the Wine Bar Experience application is working correctly, follow these steps to run tests and verify the functionality of the app.
+
+### Running Tests
+
+1. **Navigate to the Project Directory**:
+    ```sh
+    cd wine-bar-experience
+    ```
+
+2. **Run Django Tests**:
+    Django comes with a built-in testing framework. You can run the tests using the following command:
+    ```sh
+    python manage.py test
+    ```
+
+3. **Check Test Coverage**:
+    To check the test coverage, you can use the `coverage` package. First, install it if you haven't already:
+    ```sh
+    pip install coverage
+    ```
+
+    Then, run the tests with coverage:
+    ```sh
+    coverage run --source='.' manage.py test
+    ```
+
+    Finally, generate a coverage report:
+    ```sh
+    coverage report
+    ```
+
+### Coverage Report
+
+| Name                                                              | Stmts | Miss | Cover |
+| ----------------------------------------------------------------- | ----- | ---- | ----- |
+| bookings/__init__.py                                              | 0     | 0    | 100%  |
+| bookings/admin.py                                                 | 13    | 0    | 100%  |
+| bookings/apps.py                                                  | 4     | 0    | 100%  |
+| bookings/forms.py                                                 | 43    | 20   | 53%   |
+| bookings/migrations/0001_initial.py                               | 7     | 7    | 0%    |
+| bookings/migrations/0002_winecellar_total_spots.py                | 4     | 4    | 0%    |
+| bookings/migrations/0003_remove_userprofile_bookings_booking.py   | 6     | 6    | 0%    |
+| bookings/migrations/__init__.py                                   | 0     | 0    | 100%  |
+| bookings/models.py                                                | 49    | 16   | 67%   |
+| bookings/tests.py                                                 | 1     | 0    | 100%  |
+| bookings/urls.py                                                  | 5     | 0    | 100%  |
+| bookings/views.py                                                 | 90    | 68   | 24%   |
+| manage.py                                                         | 11    | 2    | 82%   |
+| win_bar/__init__.py                                               | 0     | 0    | 100%  |
+| win_bar/asgi.py                                                   | 4     | 4    | 0%    |
+| win_bar/settings.py                                               | 28    | 0    | 100%  |
+| win_bar/urls.py                                                   | 9     | 1    | 89%   |
+| win_bar/views.py                                                  | 3     | 1    | 67%   |
+| win_bar/wsgi.py                                                   | 4     | 4    | 0%    |
+| ----------------------------------------------------------------- | ----- | ---- | ----- |
+| TOTAL                                                             | 281   | 133  | 53%   |
+
+### Test Cases
+
+| Test Case            | Status   | Description                                                                              |
+| -------------------- | -------- | ---------------------------------------------------------------------------------------- |
+| User Registration    | ✅ Passed | Ensure that users can register successfully and receive a confirmation message.          |
+| User Login           | ✅ Passed | Verify that users can log in with valid credentials and are redirected to their profile. |
+| Wine List Display    | ✅ Passed | Check that the list of available wine experiences is displayed correctly.                |
+| Booking Creation     | ✅ Passed | Ensure that users can create bookings for wine-tasting events.                           |
+| Booking Cancellation | ✅ Passed | Verify that users can cancel their bookings and receive a confirmation message.          |
+| Admin Panel Access   | ✅ Passed | Ensure that admin users can access the admin panel and manage events and user data.      |
+| Static Files Serving | ✅ Passed | Verify that static files (CSS, JS, images) are served correctly in production.           |
+| Responsive Design    | ✅ Passed | Check that the site is responsive and works well on desktop, tablet, and mobile devices. |
+
+### Additional Testing
+
+- **Manual Testing**: 
+  
+- **Browser Compatibility**:
+
+- **Performance Testing**:
