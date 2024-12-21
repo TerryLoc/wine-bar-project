@@ -85,19 +85,22 @@ Return to [Table of Contents](#table-of-contents)
 
 ## Features
 
-### Personalized User Registration, Login, and Profile Management
-
-| Function               | Description                                                                                                  | Image                                                                                                      |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
-| **User Registration**  | New users can register an account. This functionality is handled by Django's built-in authentication system. | <img src="static/media/readme/register_model.png" alt="User Registration" width="400px" margin=" 0 auto"/> |
-| **User Login**         | Users can log in with their credentials. Custom views and forms are used for this functionality.             | <img src="static/media/readme/login_model.png" alt="User Login" width="400px" margin=" 0 auto"/>           |
-| **Profile Management** | Users can manage their profiles, update information, and view their booking history.                         | <img src="static/media/readme/profile_page.png" alt="Profile management" width="400px" margin=" 0 auto"/>  |
-
 ### Curated Selection of Wine-Tasting Events
 
 | Function                    | Description                                                                                                                                                                                  | Image                                                                                                              |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | **Event Listing & Details** | Displays a carousel of available wine-tasting events from different countries.<br> While providing detailed information about each wine-tasting event, including date, time, and description | <img src="static/media/readme/wine_experiences_page.png" alt="Profile management" width="400px" margin=" 0 auto"/> |
+
+### Personalized User Registration, Login, Logout and Profile Management
+
+| Function                       | Description                                                                                                  | Image                                                                                                              |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| **User Registration**          | New users can register an account. This functionality is handled by Django's built-in authentication system. | <img src="static/media/readme/register_model.png" alt="User Registration" width="400px" margin=" 0 auto"/>         |
+| **User Login**                 | Users can log in with their credentials. Custom views and forms are used for this functionality.             | <img src="static/media/readme/login_model.png" alt="User Login" width="400px" margin=" 0 auto"/>                   |
+| **Logging Out**                | On login out the user is asked to confirm that they wish to log out of their profile access.                 | <img src="static/media/readme/logout_model.png" alt="User Logout" width="400px" margin=" 0 auto"/>                 |
+| **Profile Management**         | Users can manage their profiles, update information, and view their booking history.                         | <img src="static/media/readme/profile_page.png" alt="Profile management" width="400px" margin=" 0 auto"/>          |
+| **User Notifications**         | All actions are to the CRUD standard and the user receives notifications when an action take place.          | <img src="static/media/readme/user_notifications.png" alt="Notification messages" width="400px" margin=" 0 auto"/> |
+| **Delete Profile information** | Users can delete their profile information. This action is backed up with a secondary confirmation step.     | <img src="static/media/readme/profile_delete_confirm.png" alt="Profile Delete" width="400px" margin=" 0 auto"/>    |
 
 ### Real-Time Booking System
 
@@ -106,7 +109,7 @@ Return to [Table of Contents](#table-of-contents)
 | **Booking Model**        | Users can book wine-tasting events with real-time updates on available spots.                      | <img src="static/media/readme/booking_model.png" alt="Profile management" width="400px" margin=" 0 auto"/>   |
 | **Booking Confirmation** | Users then receive confirmation of their booking. It also allows them to navigate to their profile | <img src="static/media/readme/booking_confirm.png" alt="Profile management" width="400px" margin=" 0 auto"/> |
 
-#### Edit Bookings 
+### Edit Bookings 
 | Function                               | Description                                                                                                                                                                                                                                                           | Image                                                                                                       |
 | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | **Booking Profile display**            | On the user profile page the user can see each booking they made and all the details. <br> They can also reduce the amount of spaces booked or cancel the entire booking complete. <br> This then returns the number of space cancelled back to that wine experience. | <img src="static/media/readme/bookings_profile.png" alt="Booking Profile" width="400px" margin=" 0 auto"/>  |
