@@ -95,18 +95,23 @@ Return to [Table of Contents](#table-of-contents)
 
 ### Curated Selection of Wine-Tasting Events
 
-| Function          | Description                                                                                         | Image                           |
-| ----------------- | --------------------------------------------------------------------------------------------------- | ------------------------------- |
-| **Event Listing** | Displays a list of available wine-tasting events from regions like Italy, Argentina, and Chile.     | ![Event Listing](path/to/image) |
-| **Event Details** | Provides detailed information about each wine-tasting event, including date, time, and description. | ![Event Details](path/to/image) |
+| Function                    | Description                                                                                                                                                                                  | Image                                                                                                              |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| **Event Listing & Details** | Displays a carousel of available wine-tasting events from different countries.<br> While providing detailed information about each wine-tasting event, including date, time, and description | <img src="static/media/readme/wine_experiences_page.png" alt="Profile management" width="400px" margin=" 0 auto"/> |
 
 ### Real-Time Booking System
 
-| Function                 | Description                                                                | Image                                  |
-| ------------------------ | -------------------------------------------------------------------------- | -------------------------------------- |
-| **Booking Creation**     | Users can book wine-tasting events with real-time updates on availability. | ![Booking Creation](path/to/image)     |
-| **Booking Modification** | Users can modify their existing bookings.                                  | ![Booking Modification](path/to/image) |
-| **Booking Cancellation** | Users can cancel their bookings and receive a confirmation message.        | ![Booking Cancellation](path/to/image) |
+| Function                 | Description                                                                                        | Image                                                                                                        |
+| ------------------------ | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **Booking Model**        | Users can book wine-tasting events with real-time updates on available spots.                      | <img src="static/media/readme/booking_model.png" alt="Profile management" width="400px" margin=" 0 auto"/>   |
+| **Booking Confirmation** | Users then receive confirmation of their booking. It also allows them to navigate to their profile | <img src="static/media/readme/booking_confirm.png" alt="Profile management" width="400px" margin=" 0 auto"/> |
+
+#### Edit Bookings 
+| Function                               | Description                                                                                                                                                                                                                                                           | Image                                                                                                       |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| **Booking Profile display**            | On the user profile page the user can see each booking they made and all the details. <br> They can also reduce the amount of spaces booked or cancel the entire booking complete. <br> This then returns the number of space cancelled back to that wine experience. | <img src="static/media/readme/bookings_profile.png" alt="Booking Profile" width="400px" margin=" 0 auto"/>  |
+| **Booking Cancellation**               | After the user makes a change to the booking they are asked if they wish to confirm the changes                                                                                                                                                                       | <img src="static/media/readme/confirm_change.png" alt="Profile management" width="400px" margin=" 0 auto"/> |
+| **Cancellation/ Changes Confirmation** | The user is then greeted with a confirmation of the the changes made to the booking in question.                                                                                                                                                                      | <img src="static/media/readme/update_success.png" alt="Profile management" width="400px" margin=" 0 auto"/> |
 
 ### Responsive and Dynamic Design
 
