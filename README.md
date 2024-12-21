@@ -50,6 +50,7 @@ Live link: [Booking App site](https://the-wine-bar-5c52e3b945e9.herokuapp.com/)
     <li><a href="#additional-testing">Additional Testing</a></li>
   </ul>
 </li>
+<li><a href="#credits">Credits</a></li>
 </ul>
 
 ## About the Project
@@ -472,3 +473,23 @@ The Wine Bar Experience application has been tested for performance using Google
 | User Profile     | 99                | <img src="static/media/readme/lighthouse/profile_page.png" alt="User Profile Lighthouse Report" width="200px" margin="0 auto"/>    |
 
 The performance scores indicate that the application performs well across different pages, ensuring a smooth and responsive user experience.
+<br>
+
+Return to [Table of Contents](#table-of-contents)
+
+## Credits
+
+The Wine Bar Experience project was inspired by the need to create a unique and immersive platform for wine enthusiasts. The project structure and layouts were created by me, but I used various resources to help me build the application:
+
+- [Django Documentation](https://docs.djangoproject.com/): For learning about Django functions and libraries.
+- [Bootstrap](https://getbootstrap.com/): For providing a responsive design framework and styling components.
+- [GitHub Copilot](https://copilot.github.com/): For generating code snippets and suggestions.
+
+
+### Acknowledgements
+
+I would like to thank my mentor, **Rory Patrick Sheridan**, for his guidance and support throughout the project. I would also like to thank the Code Institute tutors for their help and feedback.
+
+This project was a great learning experience and I'm excited to share it with others.
+
+Return to [Table of Contents](#table-of-contents)
