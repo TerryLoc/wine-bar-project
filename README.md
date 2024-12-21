@@ -459,4 +459,16 @@ The Wine Bar Experience application has been tested on various browsers and devi
 | Google Chrome | Mobile      | iPhone 12             | iOS              | ✅ Passed | No issues found. |
 | Google Chrome | Mobile      | Samsung Galaxy S20 SE | Android          | ✅ Passed | No issues found. |
 
-- **Performance Testing**:
+### Performance Testing
+
+The Wine Bar Experience application has been tested for performance using Google Lighthouse. The following table summarizes the performance scores for each page, along with the corresponding Lighthouse report images.
+
+| Page             | Performance Score | Lighthouse Report                                                                                                                  |
+| ---------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Home Page        | 99                | <img src="static/media/readme/lighthouse/home_page.png" alt="Home Page Lighthouse Report" height="200px" margin="0 auto"/>         |
+| Wine Experiences | 99                | <img src="static/media/readme/lighthouse/wine_cellar.png" alt="Wine Experiences Lighthouse Report" width="200px" margin="0 auto"/> |
+| Register Page    | 99                | <img src="static/media/readme/lighthouse/register_page.png" alt="Register Page Lighthouse Report" width="200px" margin="0 auto"/>  |
+| Login Page       | 100               | <img src="static/media/readme/lighthouse/login_page.png" alt="User Profile Lighthouse Report" width="200px" margin="0 auto"/>      |
+| User Profile     | 99                | <img src="static/media/readme/lighthouse/profile_page.png" alt="User Profile Lighthouse Report" width="200px" margin="0 auto"/>    |
+
+The performance scores indicate that the application performs well across different pages, ensuring a smooth and responsive user experience.
