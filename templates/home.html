@@ -1,32 +1,38 @@
 {% extends "layout.html" %}
+<!-- Block for setting the page title -->
 {% block title %}
     THE WINE BAR
 {% endblock title %}
+<!-- Block for the main content of the page -->
 {% block content %}
+    <!-- Container for the home page content with padding and centered text -->
     <div class="container py-5 text-center home-background">
+        <!-- Main heading with primary color and margin-bottom -->
         <h1 class="display-4 text-primary mb-4"><strong>We cordially invite you...</strong></h1>
         <p class="lead text-secondary mb-4">Your Next Wine Experience Awaits</p>
         <p class="fs-5">
             Step into the world of curated wine adventures! At <em>The Wine Bar</em>, we do more than pour drinks—we craft unforgettable memories. Whether you're a seasoned sommelier or a casual sipper, we've got something special waiting for you.
         </p>
 
-        <hr class="my-4">
-
         <div class="row py-4">
+            <!-- Column for Exclusive Wine Experiences -->
             <div class="col-md-4">
                 <h2 class="text-secondary">Exclusive Wine Experiences</h2>
                 <p>From vineyard tours to tasting flights, we connect you to the finest wines and the stories behind them.</p>
             </div>
+            <!-- Column for Personalised Pairings -->
             <div class="col-md-4">
                 <h2 class="text-secondary">Personalised Pairings</h2>
                 <p>Let us help you discover your perfect match—wine and food pairings made in heaven.</p>
             </div>
+            <!-- Column for Community of Connoisseurs -->
             <div class="col-md-4">
                 <h2 class="text-secondary">Community of Connoisseurs</h2>
                 <p>Share laughs, stories, and wine with a community that knows how to toast to the good life.</p>
             </div>
         </div>
 
+        <!-- Button to navigate to the Wine Cellar page -->
         <a href="{% url 'bookings:wine_cellar' %}" class="btn btn-warning btn-lg mt-3">
             Explore the Wine Cellar
         </a>
