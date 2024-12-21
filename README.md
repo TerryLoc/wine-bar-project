@@ -10,13 +10,47 @@ Live link: [Booking App site](https://the-wine-bar-5c52e3b945e9.herokuapp.com/)
 ## Table of Contents
 
 <ul> 
-<li><a href="#about-the-project">About the Project</a></li> <li><a href="#user-stories">User Stories</a></li> 
-<li><a href="#features">Features</a></li> 
-<li><a href="#setup-and-installation">Setup and Installation</a></li>
-<li><a href="#deployment">Deployment</a></li> 
+<li><a href="#about-the-project">About the Project</a>
+  <ul>
+    <li><a href="#purpose">Purpose</a></li>
+    <li><a href="#target-audience">Target Audience</a></li>
+    <li><a href="#data">Data</a></li>
+    <li><a href="#security-features">Security Features</a></li>
+  </ul>
+</li>
+<li><a href="#user-stories">User Stories</a>
+  <ul>
+    <li><a href="#users">Users</a></li>
+    <li><a href="#admin">Admin</a></li>
+  </ul>
+</li>
+<li><a href="#features">Features</a>
+  <ul>
+  <li><a href="#curated-selection-of-wine-tasting-events">Curated Selection of Wine-Tasting Events</a></li>
+    <li><a href="#personalised-user-registration-login-logout-and-profile-management">Personalised User Registration, Login, Logout and Profile Management</a></li>
+    <li><a href="#real-time-booking-system">Real-Time Booking System</a></li>
+    <li><a href="#responsive-and-dynamic-design">Responsive and Dynamic Design</a></li>
+    <li><a href="#comprehensive-admin-panel">Comprehensive Admin Panel</a></li>
+  </ul>
+</li>
+<li><a href="#setup-and-installation">Setup and Installation</a>
+</li>
+<li><a href="#deployment">Deployment</a>
+  <ul>
+    <li><a href="#create-the-heroku-app">Create the Heroku App</a></li>
+    <li><a href="#update-your-code-for-deployment">Update Your Code for Deployment</a></li>
+    <li><a href="#deploy-on-heroku">Deploy on Heroku</a></li>
+  </ul>
+</li>
 <li><a href="#technologies-used">Technologies Used</a></li>
-<li><a href="#testing">Testing</a></li>
-
+<li><a href="#testing">Testing</a>
+  <ul>
+    <li><a href="#running-tests">Running Tests</a></li>
+    <li><a href="#coverage-report">Coverage Report</a></li>
+    <li><a href="#additional-testing">Additional Testing</a></li>
+  </ul>
+</li>
+</ul>
 
 ## About the Project
 
@@ -54,7 +88,7 @@ Return to [Table of Contents](#table-of-contents)
 
 ## User Stories
 
-<h3>Here’s what I’ve set to built:</h3>
+<h3>Here’s is what I’ve set out to build:</h3>
 
 <p>You will find more information regarding stories on my projects in my Github. I used AGILE to keep track of the build process. This aloud me to understand what was achievable and what was a goal to far (This time 😉).</p>
 
@@ -91,7 +125,7 @@ Return to [Table of Contents](#table-of-contents)
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | **Event Listing & Details** | Displays a carousel of available wine-tasting events from different countries.<br> While providing detailed information about each wine-tasting event, including date, time, and description | <img src="static/media/readme/wine_experiences_page.png" alt="Profile management" width="400px" margin=" 0 auto"/> |
 
-### Personalized User Registration, Login, Logout and Profile Management
+### Personalised User Registration, Login, Logout and Profile Management
 
 | Function                       | Description                                                                                                  | Image                                                                                                              |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
@@ -170,7 +204,7 @@ Return to [Table of Contents](#table-of-contents)
     python manage.py runserver
     ```
 
-## Usage
+### Usage
 
 Once the server is running, you can access the application at `http://127.0.0.1:8000/`. From there, you can register as a user, browse available wine-tasting experiences, and make bookings. Admin users can log in to the admin panel to manage events and user data.
 <br>
