@@ -1,5 +1,7 @@
+/* Importing Google Font 'Della Respira' */
 @import url('https://fonts.googleapis.com/css2?family=Della+Respira&display=swap');
 
+/* Defining CSS variables for colors and text shadows */
 :root {
   --text-color: rgb(243, 243, 243);
   --text-color2: rgb(187, 187, 187);
@@ -11,6 +13,7 @@
   --all-tsh: 1px 1px 1px rgba(0, 0, 0, 0.6);
 }
 
+/* Styling for the body element */
 body {
   font-family: 'Della Respira', serif;
   letter-spacing: 1px;
@@ -22,6 +25,7 @@ body {
   color: var(--text-color);
 }
 
+/* Adding an overlay to the body background */
 body::after {
   content: '';
   position: fixed;
@@ -33,12 +37,13 @@ body::after {
   z-index: 1;
 }
 
+/* Ensuring all body children elements are above the overlay */
 body * {
   position: relative;
   z-index: 2;
 }
 
-/* register and login in message */
+/* Styling for messages displayed during registration and login */
 .messages {
   background-color: var(--bg-color2);
   color: var(--gold-color);
@@ -49,34 +54,41 @@ body * {
   letter-spacing: 2px;
 }
 
+/* Styling for light background elements */
 .bg-light {
   background-color: var(--bg-color2) !important;
   display: flex;
 }
 
+/* Styling for the navbar brand */
 .navbar-light .navbar-brand {
   margin-left: 20px;
   color: var(--text-color);
   font-size: 2rem;
 }
 
+/* Hover effect for the navbar brand */
 .navbar-light .navbar-brand:hover {
   color: var(--text-color2);
 }
 
+/* Custom styling for the navbar toggler icon */
 .navbar-light .navbar-toggler-icon {
   background-image: url('data:image/svg+xml;charset=utf8,<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path stroke="rgba(242, 242, 242, 1)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>');
 }
 
+/* Styling for navbar links */
 .navbar-light .navbar-nav .nav-link {
   color: var(--text-color2);
 }
 
+/* Hover effect for navbar links */
 .navbar-light .navbar-nav .nav-link:hover {
   color: var(--text-color);
   font-weight: 500;
 }
 
+/* Margin and text styling for elements with class 'mb-4' */
 .mb-4 {
   margin-top: 2rem;
   margin-bottom: 1.5rem !important;
@@ -85,14 +97,17 @@ body * {
   text-shadow: var(--all-tsh);
 }
 
+/* Removing border from navbar toggler */
 .navbar-toggler {
   border: none;
 }
 
+/* Removing outline from focused buttons */
 button:focus {
   outline: none;
 }
 
+/* Styling for the home page background */
 .home-background {
   background-color: var(--bg-color2);
   box-shadow: 0 0 50px var(--bg-color2);
@@ -100,29 +115,35 @@ button:focus {
   color: var(--text-color);
 }
 
+/* Padding for elements with classes 'pt-5' and 'py-5' */
 .pt-5,
 .py-5 {
   padding: 3rem 1.5rem !important;
 }
 
+/* Font size for paragraphs with class 'fs-5' */
 p.fs-5 {
   font-size: 1.25rem;
 }
 
+/* Transform effect for elements with class 'flip-horizontal' inside strong tags */
 strong .flip-horizontal {
   transform: scale(-1, -1);
 }
 
+/* Styling for elements with class 'text-secondary' */
 .text-secondary {
   color: var(--text-color3) !important;
   text-shadow: var(--all-tsh);
 }
 
+/* Styling for strong elements inside elements with class 'mb-4' */
 .mb-4 strong {
   color: var(--gold-color);
   font-size: 3.75rem;
 }
 
+/* Styling for carousel controls */
 .carousel-control-next,
 .carousel-control-prev {
   z-index: 4;
@@ -137,6 +158,7 @@ strong .flip-horizontal {
   margin: 10px;
 }
 
+/* Styling for card elements */
 .card {
   border-radius: 10px;
   color: var(--text-color);
@@ -144,6 +166,7 @@ strong .flip-horizontal {
   height: 100%;
 }
 
+/* Styling for card body */
 .card-body {
   display: flex;
   flex-direction: column;
@@ -152,6 +175,7 @@ strong .flip-horizontal {
   height: 100%;
 }
 
+/* Styling for card titles */
 .card-title {
   font-size: 1.75rem;
   text-align: center;
@@ -159,6 +183,7 @@ strong .flip-horizontal {
   text-shadow: var(--all-tsh);
 }
 
+/* Styling for card text */
 .card-text {
   font-size: 1.25rem;
   max-width: 80%;
@@ -166,31 +191,37 @@ strong .flip-horizontal {
   text-align: center;
 }
 
+/* Styling for the info section */
 #info {
   margin: 0 auto;
   display: flex;
 }
 
+/* Styling for paragraphs inside the info section */
 #info p {
   padding: 10px;
   font-size: 1rem;
   text-align: center;
 }
 
+/* Styling for strong elements inside the info section */
 #info strong {
   color: var(--gold-color);
 }
 
+/* Styling for the about tasting section */
 .about_tasting {
   margin: 20px;
 }
 
+/* Styling for headings inside the about tasting section */
 .about_tasting h6 {
   font-size: 1rem;
   text-transform: uppercase;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
 }
 
+/* Styling for buttons with classes 'btn-warning', 'btn-primary', and 'btn-secondary' */
 .btn-warning,
 .btn-primary,
 .btn-secondary {
@@ -201,19 +232,21 @@ strong .flip-horizontal {
   max-width: 70%;
 }
 
+/* Styling for error lists */
 .errorlist {
   color: var(--text-alert);
   font-size: 1.2rem;
   margin: 0 !important;
 }
 
-/* Profile */
+/* Styling for the profile form */
 .profile-form {
   background-color: var(--bg-color2);
   padding: 50px;
   border-radius: 10px;
 }
 
+/* Margin and alignment for elements with class 'mt-2' */
 .mt-2 {
   justify-content: center;
   margin-top: 1rem !important;
@@ -221,6 +254,7 @@ strong .flip-horizontal {
   display: flex;
 }
 
+/* Styling for profile title inside elements with class 'mb-4' */
 .mb-4 .profile_title {
   margin: 50px auto;
   text-align: center;
@@ -229,6 +263,7 @@ strong .flip-horizontal {
   text-shadow: var(--all-tsh);
 }
 
+/* Styling for user info section */
 .user_info {
   display: flex;
   align-items: center;
@@ -237,6 +272,7 @@ strong .flip-horizontal {
   font-size: 1.75rem;
 }
 
+/* Styling for profile view and edit sections */
 #profileView,
 #profileEdit {
   display: block;
@@ -245,10 +281,12 @@ strong .flip-horizontal {
   padding: 30px;
 }
 
+/* Hiding the profile edit section by default */
 #profileEdit {
   display: none;
 }
 
+/* Styling for paragraphs inside the profile edit section */
 #profileEdit p {
   font-size: 1.25rem;
   margin: 20px auto;
@@ -258,6 +296,7 @@ strong .flip-horizontal {
   align-items: center;
 }
 
+/* Styling for inputs inside paragraphs in the profile edit section */
 #profileEdit p input {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -268,15 +307,19 @@ strong .flip-horizontal {
   box-shadow: inset 0 0 0;
 }
 
+/* Styling for list group items inside the profile edit section */
 #profileEdit .list-group-item {
   background-color: var(--bg-color);
   color: var(--text-color);
 }
 
+/* Styling for danger alerts */
 .alert-danger {
   color: var(--text-alert);
   background-color: var(--bg-color2);
 }
+
+/* Styling for alerts */
 .alert {
   margin-top: 50px;
   position: relative;
@@ -284,12 +327,13 @@ strong .flip-horizontal {
   padding-left: 2rem;
 }
 
+/* Styling for error lists */
 .errorlist {
   color: var(--text-alert);
   margin: 0 !important;
 }
 
-/* register */
+/* Styling for the register form */
 .register-form {
   display: flex;
   flex-direction: column;
@@ -298,10 +342,12 @@ strong .flip-horizontal {
   width: 100%;
 }
 
+/* Styling for input info section */
 .input-info {
   margin: 0 auto;
 }
 
+/* Styling for form groups */
 .form-group {
   display: flex;
   flex-direction: column;
@@ -309,6 +355,7 @@ strong .flip-horizontal {
   margin: 0 auto;
 }
 
+/* Styling for labels inside form groups */
 .form-group label {
   font-size: 1.25rem;
   margin-top: 25px;
@@ -316,31 +363,36 @@ strong .flip-horizontal {
   margin-left: 0;
 }
 
+/* Removing margin for inputs inside the login section */
 .login_section input {
   margin: 0;
 }
 
+/* Styling for form controls */
 .form-control {
   background-color: var(--bg-color);
   color: var(--text-color);
   display: flex;
 }
 
+/* Styling for input group text */
 .input-group-text {
   background-color: transparent;
   border: none;
 }
 
-/* modal for booking */
+/* Styling for booking modal */
 .modal {
   background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(15px); /* Adjust the blur radius as needed */
 }
 
+/* Margin for modal dialog */
 .modal-dialog {
   margin-top: 200px;
 }
 
+/* Styling for modal content */
 .modal-content {
   background-color: var(--bg-color2);
   color: var(--text-color);
@@ -348,15 +400,17 @@ strong .flip-horizontal {
   z-index: 10;
 }
 
+/* Hiding the modal backdrop */
 .modal-backdrop.fade.show {
   display: none;
 }
 
+/* Styling for close button inside modal */
 .close {
   color: var(--text-color);
 }
 
-/* login and register pages */
+/* Styling for login and register pages */
 .login_section {
   background-color: var(--bg-color2);
   display: flex;
@@ -368,21 +422,25 @@ strong .flip-horizontal {
   border-radius: 10px;
 }
 
+/* Styling for text inside login section */
 .login_section ul,
 .login_section span {
   color: var(--text-alert);
 }
 
+/* Styling for headings inside login section */
 .login_section h2 {
   font-size: 2.25rem;
   text-align: center;
   color: var(--gold-color);
 }
 
+/* Styling for forms inside login section */
 .login_section form {
   font-size: 1.3rem;
 }
 
+/* Styling for paragraphs inside login section */
 .login_section p {
   display: flex;
   flex-direction: column;
@@ -390,6 +448,7 @@ strong .flip-horizontal {
   margin: 10px auto;
 }
 
+/* Styling for inputs inside login section */
 .login_section input {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -399,25 +458,29 @@ strong .flip-horizontal {
   letter-spacing: 1px;
 }
 
+/* Styling for buttons inside login section */
 .login_section button {
   border: none;
   text-transform: uppercase;
 }
 
+/* Hiding help text inside login section */
 .login_section .helptext {
   display: none;
 }
 
+/* Styling for unordered lists inside login section */
 .login_section ul {
   list-style-type: none;
   padding: 10px 0;
 }
 
+/* Styling for list items inside unordered lists in login section */
 .login_section ul li {
   margin: 5px;
 }
 
-/* user bookings on profile page */
+/* Styling for user bookings on profile page */
 .user_bookings {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -428,6 +491,7 @@ strong .flip-horizontal {
   padding: 20px;
 }
 
+/* Styling for unordered lists inside user bookings */
 .user_bookings ul {
   list-style-type: none;
   padding: 0;
@@ -435,6 +499,7 @@ strong .flip-horizontal {
   display: contents; /* Ensure ul does not interfere with grid layout */
 }
 
+/* Styling for list items inside unordered lists in user bookings */
 .user_bookings ul li {
   margin: 10px;
   padding: 20px;
@@ -445,64 +510,76 @@ strong .flip-horizontal {
   font-size: 1.25rem;
 }
 
+/* Margin for small buttons */
 .btn-group-sm > .btn,
 .btn-sm {
   margin-top: 15px;
 }
 
+/* Media queries for screens with max width of 768px */
 @media screen and (max-width: 768px) {
+  /* Adjusting font size for navbar brand */
   .navbar-light .navbar-brand {
     font-size: 1.3rem;
   }
 
+  /* Adjusting font size and margin for nav items */
   .nav-item {
     font-size: 1rem;
     display: flex;
     margin-left: 20px;
   }
 
+  /* Adjusting layout for info section */
   #info {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
+  /* Ensuring card height is 100% */
   .card {
     height: 100%;
   }
 
+  /* Adjusting margin and font size for card titles */
   .card-title {
     margin-top: 10px;
     font-size: 1.5rem;
   }
 
+  /* Adjusting font size for card text */
   .card-text {
     font-size: 1rem;
   }
 
+  /* Adjusting font size for headings inside about tasting section */
   .about_tasting h6 {
     font-size: 0.8rem;
   }
 
+  /* Adjusting max width for warning buttons */
   .btn-warning {
     max-width: 60%;
   }
 
+  /* Adjusting font size for strong elements inside elements with class 'mb-4' */
   .mb-4 strong {
     font-size: 2.5rem;
   }
 
+  /* Adjusting font size for large buttons */
   .btn-group-lg > .btn,
   .btn-lg {
     font-size: 1rem;
   }
 
-  /* Profile */
-
+  /* Profile section adjustments */
   .user_bookings {
     padding: 10px;
   }
 
+  /* Adjusting max width for list items inside user bookings */
   .user_bookings ul li {
     max-width: 220px;
   }
