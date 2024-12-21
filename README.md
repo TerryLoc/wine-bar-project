@@ -129,10 +129,11 @@ Return to [Table of Contents](#table-of-contents)
 
 ### Comprehensive Admin Panel
 
-| Function             | Description                                                                 | Image                              |
-| -------------------- | --------------------------------------------------------------------------- | ---------------------------------- |
-| **Event Management** | Admin users can create, update, and delete wine-tasting events.             | ![Event Management](path/to/image) |
-| **User Management**  | Admin users can manage user data and view all bookings for specific events. | ![User Management](path/to/image)  |
+| Function               | Description                                                                 | Image                                                                                                                                                                                                                       |
+| ---------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Event Management**   | Admin users can create, update, and delete wine-tasting events.             | <img src="static/media/readme/wine_cellar_admin.png" alt="Confirm cancellation" width="400px" margin=" 0 auto"/>  <img src="static/media/readme/save_admin.png" alt="Confirm cancellation" width="400px" margin=" 0 auto"/> |
+| **User Management**    | Admin users can manage user data and view all bookings for specific events. | <img src="static/media/readme/user_admin.png" alt="Confirm cancellation" width="400px" margin=" 0 auto"/>                                                                                                                   |
+| **Booking Management** | Admin users view all bookings for specific events.                          | <img src="static/media/readme/bookings_admin.png" alt="Confirm cancellation" width="400px" margin=" 0 auto"/>                                                                                                               |
 
 Return to [Table of Contents](#table-of-contents)
 
