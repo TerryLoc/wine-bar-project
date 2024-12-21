@@ -242,7 +242,7 @@ Your Wine Bar Experience Django project should now be successfully deployed on H
 Return to [Table of Contents](#table-of-contents)
 ## Technologies Used
 
-- **[Django](https://djangocentral.com/)**: The primary web framework used for building the backend of the application. It handles user authentication, event scheduling, and booking management.
+- **[Django](https://www.djangoproject.com/)**: The primary web framework used for building the backend of the application. It handles user authentication, event scheduling, and booking management.
   
 - **Gunicorn**: A production-ready web server for running the Django application on Heroku.
   
@@ -321,6 +321,10 @@ By following these steps, WhiteNoise will handle your static files efficiently a
 - **[Git](https://git-scm.com/)**: Version control system used for tracking changes and collaborating on the project.
   
 - **[GitHub](https://github.com/)**: The platform used for hosting the project's repository and integrating with Heroku for deployment.
+  
+- **[I💙IMG](https://www.iloveimg.com/)**: I used this site to compress the images for the Readme.
+
+- **[ChatGPT](https://chatgpt.com/)**: I utilized ChatGPT to create the wine bar experiences.
 <br>
 
 Return to [Table of Contents](#table-of-contents)
