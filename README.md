@@ -442,7 +442,21 @@ To ensure that the Wine Bar Experience application is working correctly, follow 
 | Static Files Serving | ✅ Passed | Verify that static files (CSS, JS, images) are served correctly in production.           |
 | Responsive Design    | ✅ Passed | Check that the site is responsive and works well on desktop, tablet, and mobile devices. |
 
-  
-- **Browser Compatibility**:
+#### Browser Compatibility:
+
+The Wine Bar Experience application has been tested on various browsers and devices to ensure compatibility and functionality. No issues were found, and the app works as intended.
+
+| Browser       | Device Type | Device                | Operating System | Status   | Notes            |
+| ------------- | ----------- | --------------------- | ---------------- | -------- | ---------------- |
+| Brave         | Desktop     | Mac                   | macOS            | ✅ Passed | No issues found. |
+| Brave         | Desktop     | Windows PC            | Windows 10       | ✅ Passed | No issues found. |
+| Brave         | Mobile      | iPhone 12             | iOS              | ✅ Passed | No issues found. |
+| Brave         | Mobile      | Samsung Galaxy S20 SE | Android          | ✅ Passed | No issues found. |
+| Safari        | Desktop     | Mac                   | macOS            | ✅ Passed | No issues found. |
+| Safari        | Mobile      | iPhone 12             | iOS              | ✅ Passed | No issues found. |
+| Google Chrome | Desktop     | Mac                   | macOS            | ✅ Passed | No issues found. |
+| Google Chrome | Desktop     | Windows PC            | Windows 10       | ✅ Passed | No issues found. |
+| Google Chrome | Mobile      | iPhone 12             | iOS              | ✅ Passed | No issues found. |
+| Google Chrome | Mobile      | Samsung Galaxy S20 SE | Android          | ✅ Passed | No issues found. |
 
 - **Performance Testing**:
