@@ -242,11 +242,11 @@ Your Wine Bar Experience Django project should now be successfully deployed on H
 Return to [Table of Contents](#table-of-contents)
 ## Technologies Used
 
-- **Django**: The primary web framework used for building the backend of the application. It handles user authentication, event scheduling, and booking management.
+- **[Django](https://djangocentral.com/)**: The primary web framework used for building the backend of the application. It handles user authentication, event scheduling, and booking management.
   
 - **Gunicorn**: A production-ready web server for running the Django application on Heroku.
   
-- **Heroku**: The platform used for deploying the application.
+- **[Heroku](https://www.heroku.com/)**: The platform used for deploying the application.
 
 <hr>
 
@@ -314,13 +314,13 @@ By following these steps, WhiteNoise will handle your static files efficiently a
   
 - **JavaScript**: Adds interactivity to the frontend, including dynamic updates and immersive projections.
   
-- **Bootstrap**: A CSS framework used for responsive design and styling.
+- **[Bootstrap](https://getbootstrap.com/)**: A CSS framework used for responsive design and styling.
   
-- **Python**: The programming language used to develop the Django application.
+- **[Python](https://www.python.org/)**: The programming language used to develop the Django application.
   
-- **Git**: Version control system used for tracking changes and collaborating on the project.
+- **[Git](https://git-scm.com/)**: Version control system used for tracking changes and collaborating on the project.
   
-- **GitHub**: The platform used for hosting the project's repository and integrating with Heroku for deployment.
+- **[GitHub](https://github.com/)**: The platform used for hosting the project's repository and integrating with Heroku for deployment.
 <br>
 
 Return to [Table of Contents](#table-of-contents)
