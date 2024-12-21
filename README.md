@@ -459,7 +459,7 @@ The Wine Bar Experience application has been tested on various browsers and devi
 | Google Chrome | Mobile      | iPhone 12             | iOS              | ✅ Passed | No issues found. |
 | Google Chrome | Mobile      | Samsung Galaxy S20 SE | Android          | ✅ Passed | No issues found. |
 
-### Performance Testing
+#### Performance Testing:
 
 The Wine Bar Experience application has been tested for performance using Google Lighthouse. The following table summarizes the performance scores for each page, along with the corresponding Lighthouse report images.
 
