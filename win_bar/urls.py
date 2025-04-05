@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
+
 # URL patterns for the winery app and the bookings app
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -17,3 +18,6 @@ urlpatterns = [
 # If the project is in debug mode, add the media URL and document root
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Custom error handlers
+handler404 = "win_bar.views.custom_page_not_found"

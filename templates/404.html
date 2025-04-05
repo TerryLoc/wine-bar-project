@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+<!-- Block for setting the page title -->
+{% block title %}
+    404 - Page Not Found | THE WINE BAR
+{% endblock title %}
+<!-- Block for the main content of the page -->
+{% block content %}
+    <!-- Container for the 404 page content with padding and centered text -->
+    <div class="container py-5 text-center home-background">
+        <!-- Main heading with error styling -->
+        <h1 class="display-4 text-danger mb-4"><strong>404</strong></h1>
+        <p class="lead text-secondary mb-4">Looks Like This Wine Has Evaporated</p>
+        <p class="fs-5">
+            It seems the page you're looking for has disappeared like the last drop of a fine Bordeaux. Perhaps it's been decanted elsewhere or simply doesn't exist in our cellar.</p>
+        <!-- Button to return to home page -->
+        <a href="{% url 'winery' %}" class="btn btn-warning btn-lg mt-3">
+            Return to Home Page
+        </a>
+    </div>
+{% endblock content %}
