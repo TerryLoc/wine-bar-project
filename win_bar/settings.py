@@ -1,29 +1,28 @@
 from pathlib import Path
 import os
 import dj_database_url
+from dotenv import load_dotenv
 
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
 # SECURITY WARNING: I updated the secret key to a new one!
 SECRET_KEY = os.getenv("SECRET_KEY", "fallback_key")
 
 # Debug settings
-DEBUG = os.environ.get("DEBUG", "False") != "False"
+DEBUG = (
+    os.getenv("DEBUG", "False") == "True" if "DATABASE_URL" not in os.environ else False
+)
 
-# This to control environment
-# IS_PRODUCTION = os.getenv("DATABASE_URL") is not None
-
+# The HTTP header that the server uses to identify the host
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".herokuapp.com"]
 
 
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -128,14 +127,3 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGOUT_REDIRECT_URL = "winery"  # This will redirect to the home page after logging out
 LOGIN_REDIRECT_URL = "bookings:profile"  # direct to profile page
-
-# # Additional settings for production
-# if IS_PRODUCTION:
-#     SECURE_SSL_REDIRECT = True
-#     SESSION_COOKIE_SECURE = True
-#     CSRF_COOKIE_SECURE = True
-#     X_FRAME_OPTIONS = "DENY"
-# else:
-#     SECURE_SSL_REDIRECT = False
-#     SESSION_COOKIE_SECURE = False
-#     CSRF_COOKIE_SECURE = False
