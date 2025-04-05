@@ -1,4 +1,3 @@
-core.mongo*
 core.python*
 .env
 __pycache__/
