@@ -14,10 +14,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "fallback_key")
 
 # Debug settings
-# DEBUG = (
-#     os.getenv("DEBUG", "False") == "True" if "DATABASE_URL" not in os.environ else False
-# )
-DEBUG = True
+DEBUG = (
+    os.getenv("DEBUG", "False") == "True" if "DATABASE_URL" not in os.environ else False
+)
+
 
 # The HTTP header that the server uses to identify the host
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".herokuapp.com"]
@@ -136,3 +136,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGOUT_REDIRECT_URL = "winery"  # This will redirect to the home page after logging out
 LOGIN_REDIRECT_URL = "bookings:profile"  # direct to profile page
+
+# Add to settings.py for Heroku deployment and extra security
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    X_FRAME_OPTIONS = "DENY"
