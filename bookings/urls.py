@@ -7,7 +7,7 @@ app_name = "bookings"
 
 # Define the URL patterns for the app
 urlpatterns = [
-    path("wine_cellar/", views.wine_list, name="wine_cellar"),
+    path("", views.wine_list, name="wine_cellar"),
     path("book/<int:wine_id>/", views.book_wine, name="book"),
     path("register/", views.register, name="register"),
     # Use the custom login view to handle user authentication

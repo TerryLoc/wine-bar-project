@@ -14,9 +14,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "fallback_key")
 
 # Debug settings
-DEBUG = (
-    os.getenv("DEBUG", "False") == "True" if "DATABASE_URL" not in os.environ else False
-)
+# DEBUG = (
+#     os.getenv("DEBUG", "False") == "True" if "DATABASE_URL" not in os.environ else False
+# )
+DEBUG = True
 
 # The HTTP header that the server uses to identify the host
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".herokuapp.com"]
