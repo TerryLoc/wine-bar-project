@@ -1,4 +1,8 @@
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -7,11 +11,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-h_qincfq$_0at-o_0$(4js53&#w1+*6hrcoc%i@@f$19sa)bvn"
+# SECURITY WARNING: I updated the secret key to a new one!
+SECRET_KEY = os.getenv("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+
+# Debug settings
+DEBUG = (
+    os.getenv("DEBUG", "False") == "True" if "DATABASE_URL" not in os.environ else False
+)
+
+# This to control environment
+IS_PRODUCTION = os.getenv("DATABASE_URL") is not None
 
 ALLOWED_HOSTS = ["localhost", ".herokuapp.com", "127.0.0.1"]
 
@@ -120,7 +130,7 @@ LOGOUT_REDIRECT_URL = "winery"  # This will redirect to the home page after logg
 LOGIN_REDIRECT_URL = "bookings:profile"  # direct to profile page
 
 # Additional settings for production
-if not DEBUG:
+if IS_PRODUCTION:
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
