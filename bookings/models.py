@@ -46,7 +46,10 @@ class UserProfile(models.Model):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        UserProfile.objects.get_or_create(user=instance)
+        # when a User is created with an email, the UserProfile will inherit it.
+        UserProfile.objects.get_or_create(
+            user=instance, defaults={"email": instance.email}  # Set email from User
+        )
 
 
 # This signal saves the user profile when the user is saved.

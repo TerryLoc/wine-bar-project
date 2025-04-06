@@ -494,6 +494,30 @@ To ensure that the Wine Bar Experience application is working correctly, follow 
 | ----------------------------------------------------------------- | ----- | ---- | ----- |
 | TOTAL                                                             | 281   | 133  | 53%   |
 
+#### NEW Coverage Report
+
+| Name                                                              | Stmts | Miss | Cover |
+| ----------------------------------------------------------------- | ----- | ---- | ----- |
+| bookings/__init__.py                                              | 0     | 0    | 100%  |
+| bookings/admin.py                                                 | 13    | 0    | 100%  |
+| bookings/apps.py                                                  | 4     | 0    | 100%  |
+| bookings/forms.py                                                 | 43    | 4    | 91%   |
+| bookings/migrations/0001_initial.py                               | 7     | 0    | 100%  |
+| bookings/migrations/0002_winecellar_total_spots.py                | 4     | 0    | 100%  |
+| bookings/migrations/0003_remove_userprofile_bookings_booking.py   | 6     | 0    | 100%  |
+| bookings/migrations/__init__.py                                   | 0     | 0    | 100%  |
+| bookings/models.py                                                | 49    | 0    | 100%  |
+| bookings/tests.py                                                 | 71    | 0    | 100%  |
+| bookings/urls.py                                                  | 5     | 0    | 100%  |
+| bookings/views.py                                                 | 98    | 51   | 48%   |
+| manage.py                                                         | 11    | 2    | 82%   |
+| win_bar/__init__.py                                               | 0     | 0    | 100%  |
+| win_bar/settings.py                                               | 43    | 11   | 74%   |
+| win_bar/urls.py                                                   | 10    | 1    | 90%   |
+| win_bar/views.py                                                  | 5     | 2    | 60%   |
+| ----------------------------------------------------------------- | ----- | ---- | ----- |
+| TOTAL                                                             | 369   | 71   | 81%   |
+
 ### Additional Testing
 
 #### Manual Testing: 
@@ -560,6 +584,8 @@ This project was a great learning experience and I'm excited to share it with ot
 
 Return to [Table of Contents](#table-of-contents)
 
+---
+
 ## Recent Changes and Improvements
 
 This section summarises updates to the code and documentation addressing the feedback from the project's first submission.
@@ -583,8 +609,11 @@ This section summarises updates to the code and documentation addressing the fee
 
 **Merit Criteria**
 
-- **Profile Deletion Functionality Fixed (Criterion 2.1)**  
+- **Profile Deletion Functionality Fixed (Criterion 1.1 & 2.1)**  
   Repaired the broken profile deletion feature, which previously redirected to a form with "None" fields and an error. Added a "Delete Profile" button in `profile.html` with a Bootstrap modal for confirmation. The `profile` view now processes the `delete_profile` POST request, deleting the `User` and `UserProfile` objects, logging out the user, and redirecting to the wine cellar page (`bookings:wine_cellar`) with a success message, ensuring seamless account management.
+
+- **Added Unit Tests (Criterion 4.1)**  
+  Added unit tests in `bookings/tests.py` for `WineCellar`, `UserProfile`, and `Booking` models, covering creation, custom methods (e.g., `has_available_spots`, `save`), and signal behavior. Also tested the `profile` view for loading, updates, and deletion, and added tests for `UserProfileForm` and `wine_list` view. Fixed test failures by adjusting `UserProfile` creation in tests to avoid duplicate entries and updated the signal to sync `User` email. Generated a new coverage report using `test.py`, improving coverage from 53% to 81%.
 
 **Side Note**
 
