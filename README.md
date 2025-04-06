@@ -18,6 +18,7 @@ Live link: [Booking App site](https://the-wine-bar-5c52e3b945e9.herokuapp.com/)
     <li><a href="#security-features">Security Features</a></li>
   </ul>
 </li>
+<li><a href="#design-section">Design Section</a></li>
 <li><a href="#user-stories">User Stories</a>
   <ul>
     <li><a href="#users">Users</a></li>
@@ -84,6 +85,70 @@ Security is a critical part of the project. Several measures have been implement
 - **Session Management**: Secure session cookies are used to manage user sessions, with settings to prevent session hijacking and fixation.
 - **Access Control**: Role-based access control is implemented to restrict access to certain parts of the application based on user roles (e.g., admin, user).
 <br>
+
+Return to [Table of Contents](#table-of-contents)
+
+## Design Section
+
+This section outlines the design process and decisions for "The Wine Bar," an online booking system for wine-tasting events. The design blends elegance with usability, creating a wine-inspired experience rooted in UX principles.
+
+### Wireframes
+Below are conceptual wireframes for key pages, designed to ensure usability across desktop, tablet, and mobile devices.
+
+- **Homepage**  
+  - Layout: Header with navigation bar (Home, events, Register/ login), hero section with a welcome message.
+    
+  - Purpose: Quick access to bookings, register and login. 
+   
+  <img src="static/media/readme/landing_page.jpg" alt="home page" width="400px" margin=" 0 auto"/>
+<br>
+
+- **Booking Page**  
+  - Layout: Compact form with fields for date, time, and party size, plus a "Book Now" button. There is a simple model to complete the booking.
+   
+  - Purpose: Streamlined booking process for mobile/ desktop users.   
+  
+  <img src="static/media/readme/booking.jpg" alt="home page" width="400px" margin=" 0 auto"/>
+<br>
+
+- **Profile Page**  
+  - Layout: A simple layout with user information (name, email, contact number). There is also a section on the page for the booked events (They can edit or cancel booking from here). 
+  
+  - Purpose: All the required information the user needs in one place. (Also updates admin side)
+  
+  <img src="static/media/readme/profile.jpg" alt="home page" width="400px" margin=" 0 auto"/>
+<br> 
+
+- **Admin Panel**  
+  - Layout: The use of the Django admin panel is all I need for this project.   
+
+  - Purpose: Easy management of booking and users records.
+   
+  <img src="static/media/readme/admin_panel.png" alt="home page" width="400px" margin=" 0 auto"/> 
+
+### Color Scheme
+The color palette is defined in the CSS `:root` variables, inspired by wine culture and designed for contrast and readability:
+- **Primary Text Color**: `rgb(243, 243, 243)` (#F3F3F3, Light White) - Main text for legibility against dark backgrounds.  
+- **Secondary Text Color**: `rgb(187, 187, 187)` (#BBBBBB, Light Gray) - Subtle text variations (e.g., labels or secondary info).  
+- **Tertiary Text Color**: `rgb(152, 152, 152)` (#989898, Medium Gray) - Additional hierarchy for less prominent text.  
+- **Alert Text Color**: `rgb(211, 25, 44)` (#D3192C, Bright Red) - Error messages or alerts (e.g., form validation).  
+- **Gold Accent**: `#ffc107` (Golden Yellow) - Highlights buttons and key actions/ areas, evoking premium wine quality.  
+- **Primary Background**: `rgba(71, 71, 71, 0.9)` (#474747 with 90% opacity, Dark Gray) - Main content background with a sleek, semi-transparent look.  
+- **Secondary Background**: `rgba(21, 21, 21, 0.9)` (#151515 with 90% opacity, Near Black) - Deeper contrast for headers or overlays.  
+- **Text Shadow**: `1px 1px 1px rgba(0, 0, 0, 0.6)` - Subtle shadow for text to enhance readability on varied backgrounds.
+
+### Typography
+Typography is defined in the `body` CSS, prioritizing a refined and thematic aesthetic:
+- **Font Family**: `'Della Respira', serif` - A serif font with a classic, elegant feel, reminiscent of wine labels and vintage charm.  
+- **Letter Spacing**: `1px` - Adds subtle spacing for improved readability and a polished look.
+
+### Design Rationale
+The design ties functionality to a cohesive wine-tasting theme:
+- **Navigation**: Intuitive menu labels ("Home, Wine Celler, Register, Uncork Access") ensure easy access to core features.  
+- **Responsiveness**: The layout adjusts seamlessly across devices, with forms and tables optimized for all screen sizes.  
+- **Theme**: A fixed background image (`empty_glasses.jpg`) of empty wine glasses, styled with `background-size: cover`, `background-repeat: no-repeat`, and `background-position: center`, sets a sophisticated tone. Dark semi-transparent backgrounds (`--bg-color`, `--bg-color2`) overlay this image, ensuring content readability while maintaining the wine aesthetic. The `--gold-color` accents buttons, and `--text-color` (light white) ensures text stands out.  
+- **User Interaction**: Interactive elements (e.g., "Book Now" button) use `--gold-color` for prominence, while `--text-alert` provides clear error feedback. The `'Della Respira'` font enhances the wine-cellar vibe, with `1px` letter spacing adding refinement.
+
 
 Return to [Table of Contents](#table-of-contents)
 
