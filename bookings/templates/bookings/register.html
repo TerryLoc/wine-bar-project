@@ -12,7 +12,7 @@
                 <div class="form-group">
                     <label for="{{ form.username.id_for_label }}">Username</label>
                     {{ form.username }}
-                    {% if form.username.errors %}<div class="text-danger">{{ form.username.errors }}</div>{% endif %}
+                    {% if form.username.errors %}<div id="id_username_helptext" class="text-danger">{{ form.username.errors }}</div>{% endif %}
                 </div>
                 <div class="form-group">
                     <label for="{{ form.password1.id_for_label }}">Password</label>
@@ -24,7 +24,7 @@
                             </span>
                         </div>
                     </div>
-                    {% if form.password1.errors %}<div class="text-danger">{{ form.password1.errors }}</div>{% endif %}
+                    {% if form.password1.errors %}<div id="id_password1_helptext" class="text-danger">{{ form.password1.errors }}</div>{% endif %}
                 </div>
                 <div class="form-group">
                     <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
@@ -36,7 +36,7 @@
                             </span>
                         </div>
                     </div>
-                    {% if form.password2.errors %}<div class="text-danger">{{ form.password2.errors }}</div>{% endif %}
+                    {% if form.password2.errors %}<div id="id_password2_helptext" class="text-danger">{{ form.password2.errors }}</div>{% endif %}
                 </div>
                 <button type="submit" class="btn btn-warning">Start Tasting</button>
             </div>
