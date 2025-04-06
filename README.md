@@ -613,7 +613,7 @@ This section summarises updates to the code and documentation addressing the fee
   Repaired the broken profile deletion feature, which previously redirected to a form with "None" fields and an error. Added a "Delete Profile" button in `profile.html` with a Bootstrap modal for confirmation. The `profile` view now processes the `delete_profile` POST request, deleting the `User` and `UserProfile` objects, logging out the user, and redirecting to the wine cellar page (`bookings:wine_cellar`) with a success message, ensuring seamless account management.
 
 - **Added Unit Tests (Criterion 4.1)**  
-  Added unit tests in `bookings/tests.py` for `WineCellar`, `UserProfile`, and `Booking` models, covering creation, custom methods (e.g., `has_available_spots`, `save`), and signal behavior. Also tested the `profile` view for loading, updates, and deletion, and added tests for `UserProfileForm` and `wine_list` view. Fixed test failures by adjusting `UserProfile` creation in tests to avoid duplicate entries and updated the signal to sync `User` email. Generated a new coverage report using `test.py`, improving coverage from 53% to 81%.
+  Added unit tests in `bookings/tests.py` for `WineCellar`, `UserProfile`, and `Booking` models, covering creation, custom methods (e.g., `has_available_spots`, `save`), and signal behavior. Also tested the `profile` view for loading, updates, and deletion, and added tests for `UserProfileForm` and `wine_list` view. Fixed test failures by adjusting `UserProfile` creation in tests to avoid duplicate entries and updated the signal to sync `User` email. I generated a new coverage report improving coverage from 53% to 81%.
 
 **Side Note**
 
