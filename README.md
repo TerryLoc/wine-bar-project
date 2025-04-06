@@ -564,6 +564,8 @@ Return to [Table of Contents](#table-of-contents)
 
 This section summarises updates to the code and documentation addressing the feedback from the project's first submission.
 
+**Pass Criteria**
+
 - **Design Documentation Added (Criterion 1.13)**  
   I added a [Design Section](#design-section) section to the README, featuring placeholders for wireframes of key pages (Homepage, Booking Page, Admin Panel), the wine-inspired color scheme from `:root` CSS variables, typography (`'Della Respira', serif`), and a design rationale tied to the `empty_glasses.jpg` background. This documents the UX-driven, responsive design process and thematic choices, fulfilling the requirement for mockups and design specifications.
 
@@ -578,6 +580,22 @@ This section summarises updates to the code and documentation addressing the fee
 
 - **DEBUG Mode Disabled (Criterion 6.4)**  
   Set `DEBUG = False` in production settings to prevent sensitive information exposure, with `DEBUG = True` retained only for local development via environment-specific configurations.
+
+**Merit Criteria**
+
+- **Profile Deletion Functionality Fixed (Criterion 2.1)**  
+  Repaired the broken profile deletion feature, which previously redirected to a form with "None" fields and an error. Added a "Delete Profile" button in `profile.html` with a Bootstrap modal for confirmation. The `profile` view now processes the `delete_profile` POST request, deleting the `User` and `UserProfile` objects, logging out the user, and redirecting to the wine cellar page (`bookings:wine_cellar`) with a success message, ensuring seamless account management.
+
+**Side Note**
+
+- **Custom 404 Error Page**
+  
+  As part of this resubmission, I've implemented a custom 404 error page that:
+
+  - Maintains the site's wine-themed design aesthetic
+  - Provides clear navigation back to the home page
+  - Improves user experience by handling errors gracefully
+  - Adds professionalism to the overall site architecture
 
 These changes enhance security by safeguarding sensitive data, improve scalability with a production-ready database, and provide comprehensive design documentation. The use of version control remains efficient with descriptive commits.
 
