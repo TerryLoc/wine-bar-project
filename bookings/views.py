@@ -8,6 +8,7 @@ from django.http import JsonResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout
 
 
 class CustomLoginView(LoginView):
@@ -117,36 +118,37 @@ def book_wine(request, wine_id):
 @login_required
 def profile(request):
     """
-    Display and manage user profile.
+    This view is update to be able to display, update, or delete user profile.
     """
-    # Retrieve or create a user profile for the current user
     profile, _ = UserProfile.objects.get_or_create(user=request.user)
-    # Retrieve all bookings made by the current user
     bookings = Booking.objects.filter(user=request.user)
 
     if request.method == "POST":
-        # If the request method is POST, create a form instance with the submitted data and the current profile
-        form = UserProfileForm(request.POST, instance=profile)
-        if form.is_valid():
-            # If the form is valid, update the profile and user information
-            profile = form.save(commit=False)
-            profile.user.first_name = form.cleaned_data["first_name"]
-            profile.user.last_name = form.cleaned_data["last_name"]
-            profile.user.email = profile.email
-            profile.user.save()
-            profile.save()
-            # Display a success message to the user
-            messages.success(request, "Profile updated successfully.")
-            # Redirect the user to their profile page
-            return redirect("bookings:profile")
+        if "delete_profile" in request.POST:
+            # Handle profile deletion
+            user = request.user
+            profile.delete()
+            user.delete()
+            logout(request)
+            messages.success(request, "Your profile has been deleted successfully.")
+            return redirect("bookings:wine_cellar")  # Redirect to wine cellar page
         else:
-            # Display an error message if the form is invalid
-            messages.error(request, "Failed to update profile. Please try again.")
+            # Handle profile update
+            form = UserProfileForm(request.POST, instance=profile)
+            if form.is_valid():
+                profile = form.save(commit=False)
+                profile.user.first_name = form.cleaned_data["first_name"]
+                profile.user.last_name = form.cleaned_data["last_name"]
+                profile.user.email = profile.email
+                profile.user.save()
+                profile.save()
+                messages.success(request, "Profile updated successfully.")
+                return redirect("bookings:profile")
+            else:
+                messages.error(request, "Failed to update profile. Please try again.")
     else:
-        # If the request method is GET, create a form instance with the current profile
         form = UserProfileForm(instance=profile)
 
-    # Render the profile template with the form and the user's bookings
     return render(
         request, "bookings/profile.html", {"form": form, "bookings": bookings}
     )
