@@ -52,6 +52,7 @@ Live link: [Booking App site](https://the-wine-bar-5c52e3b945e9.herokuapp.com/)
   </ul>
 </li>
 <li><a href="#credits">Credits</a></li>
+<li><a href="#recent-changes-and-improvements">Recent Changes and Improvements</a></li>
 </ul>
 
 ## About the Project
@@ -556,5 +557,28 @@ The Wine Bar Experience project was inspired by the need to create a unique and 
 I would like to thank my mentor, **Rory Patrick Sheridan**, for his guidance and support throughout the project. I would also like to thank the Code Institute tutors for their help and feedback.
 
 This project was a great learning experience and I'm excited to share it with others.
+
+Return to [Table of Contents](#table-of-contents)
+
+## Recent Changes and Improvements
+
+This section summarises updates to the code and documentation addressing the feedback from the project's first submission.
+
+- **Design Documentation Added (Criterion 1.13)**  
+  I added a [Design Section](#design-section) section to the README, featuring placeholders for wireframes of key pages (Homepage, Booking Page, Admin Panel), the wine-inspired color scheme from `:root` CSS variables, typography (`'Della Respira', serif`), and a design rationale tied to the `empty_glasses.jpg` background. This documents the UX-driven, responsive design process and thematic choices, fulfilling the requirement for mockups and design specifications.
+
+- **Secured Sensitive Information (Criteria 5.2 & 6.4)**  
+  Removed the hardcoded `SECRET_KEY` from the backend settings, which was previously visible in the repository and settings file. It is now stored as an environment variable in a `.env` file for local development and configured in Heroku’s environment variables for production. This ensures sensitive data is not exposed in the codebase, aligning with security best practices.
+
+- **Environment Variable Management (Criterion 5.2)**  
+  Updated the codebase to prevent environment variable values from being visible in the repository. All sensitive configuration (e.g., `SECRET_KEY`, database credentials) is now loaded dynamically via environment variables, improving security and maintainability.
+
+- **Database Upgrade (Criterion 6.4)**  
+  Replaced `db.sqlite3` in production with PostgreSQL to support scalability, performance, and concurrent user access. Updated the README deployment steps to include PostgreSQL setup for both local and Heroku environments, replacing the less robust SQLite solution.
+
+- **DEBUG Mode Disabled (Criterion 6.4)**  
+  Set `DEBUG = False` in production settings to prevent sensitive information exposure, with `DEBUG = True` retained only for local development via environment-specific configurations.
+
+These changes enhance security by safeguarding sensitive data, improve scalability with a production-ready database, and provide comprehensive design documentation. The use of version control remains efficient with descriptive commits.
 
 Return to [Table of Contents](#table-of-contents)
